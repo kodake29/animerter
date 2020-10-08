@@ -1,0 +1,7 @@
+<%= form_for @episode, url: admins_anime_episodes_path do |f| %>
+ <%= f.attachment_field :image %>
+ episode_number<%= f.text_area :episode_number%>
+subtitle<%= f.text_field :subtitle%>
+explanation<%= f.text_area :explanation%>
+<%= f.submit%>
+<% end %>
