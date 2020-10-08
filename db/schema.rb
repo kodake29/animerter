@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_05_050939) do
+ActiveRecord::Schema.define(version: 2020_10_07_045900) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,51 @@ ActiveRecord::Schema.define(version: 2020_10_05_050939) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "animes", force: :cascade do |t|
+    t.string "title"
+    t.text "explanation"
+    t.string "image_id"
+    t.integer "display_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "episodes", force: :cascade do |t|
+    t.integer "anime_id"
+    t.integer "episode_number"
+    t.string "subtitle"
+    t.text "explanation"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "my_lists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "anime_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "episode_id"
+    t.integer "user_id"
+    t.integer "evaluation"
+    t.string "comment"
+    t.integer "release_status", default: 0
+    t.integer "private_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
