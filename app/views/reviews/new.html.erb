@@ -1,2 +1,12 @@
 <h1>Reviews#new</h1>
 <p>Find me in app/views/reviews/new.html.erb</p>
+<p>評価 : <%= rating_for @review, '評価' %></p>
+<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path do |f| %>
+<%= f.text_field :evaluation %>
+<%= f.text_area :comment %>
+<%= f.radio_button :private_status, :公開%>
+<%= f.label :公開 %>
+<%= f.radio_button :private_status, :非公開%>
+<%= f.label :非公開 %>
+<%= f.submit "追加する"%>
+<% end %>

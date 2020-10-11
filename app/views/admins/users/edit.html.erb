@@ -1,0 +1,11 @@
+<h1>Admins::Users#edit</h1>
+<p>Find me in app/views/admins/users/edit.html.erb</p>
+<%= form_for @user, url: admins_user_path(@user) do |f| %>
+
+<%= f.text_field :name %>
+<%= f.radio_button :withdrawal_status, :有効会員 %>
+<%= f.label :有効会員 %>
+<%= f.radio_button :withdrawal_status, :退会 %>
+<%= f.label :退会 %>
+<%= f.submit "修正する"%>
+<% end %>

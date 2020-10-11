@@ -1,5 +1,15 @@
-<h1>Animes#index</h1>
-<p>Find me in app/views/animes/index.html.erb</p>
+<div class="container">
+<h2>全ての作品</h2>
+<div class="alert alert-primary" role="alert">
+  A simple primary alert—check it out!
+</div>
 <% @animes.each do |anime|%>
-<%= anime.title %>
+<%= attachment_image_tag(anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<h3><%= link_to anime.title, anime_path(anime)%></h3>
+<%= anime.explanation %>
 <% end %>
+
+<div class="alert alert-secondary" role="alert">
+  A simple secondary alert—check it out!
+</div>
+</div>

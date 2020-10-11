@@ -1,8 +1,13 @@
 class AnimesController < ApplicationController
-  def show
-  end
 
   def index
-    @animes = Anime.all
+    @animes = Anime.where(display_status: 0)
+    @episodes = Episode.all
   end
+
+  def show
+    @anime = Anime.find(params[:id])
+    @episodes = Episode.all
+  end
+
 end

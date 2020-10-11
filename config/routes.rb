@@ -8,9 +8,11 @@ Rails.application.routes.draw do
   registrations: 'users/registrations'
   }
   resources :animes do
-    resources :episodes
-    resources :reviews
+    resources :episodes do
+      resources :reviews
+    end
   end
+  resources :users
   resources :my_lists
   resources :requests
 
@@ -21,9 +23,11 @@ Rails.application.routes.draw do
     }
     namespace :admins do
       resources :animes do
-        resources :episodes
-        resources :reviews
+        resources :episodes do
+          resources :reviews
+        end
       end
+      resources :users ,only:[:index, :show, :edit, :update]
       resources :requests, only: [:index, :show]
     end
 

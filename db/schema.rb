@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2020_10_07_045900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "rating_caches", force: :cascade do |t|
+    t.string "cacheable_type"
+    t.integer "cacheable_id"
+    t.float "avg", null: false
+    t.integer "qty", null: false
+    t.string "dimension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cacheable_type", "cacheable_id"], name: "index_rating_caches_on_cacheable_type_and_cacheable_id"
+  end
+
   create_table "requests", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
@@ -75,6 +86,9 @@ ActiveRecord::Schema.define(version: 2020_10_07_045900) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "name"
+    t.string "image_id"
+    t.integer "withdrawal_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
