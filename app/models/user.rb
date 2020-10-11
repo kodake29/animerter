@@ -9,7 +9,6 @@ class User < ApplicationRecord
          has_many :requests
          has_many :my_lists
 
-         ratyrate_rater
 
 
 end
