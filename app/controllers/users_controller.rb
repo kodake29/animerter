@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     end
   end
 
+
   def confirmation
   end
 
@@ -29,6 +30,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  params.require(:user).permit(:episode_id, :user_id, :evaluation, :comment, :release_status, :private_status)
+  params.require(:user).permit(:name, :image)
   end
 end

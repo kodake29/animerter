@@ -12,7 +12,17 @@
 <td>
 <%= review.comment %>
 <%= link_to review.user.name, user_path(review.user)%>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
 </td>
 </tr>
 <% end %>
 </table>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
