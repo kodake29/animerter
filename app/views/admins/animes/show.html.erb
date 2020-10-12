@@ -1,0 +1,31 @@
+<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<%= @anime.title %>
+<%= @anime.explanation %>
+<%= link_to "編集する", edit_admins_anime_path(@anime)%>
+
+<h4>エピソード数</h4>
+<%= @anime.episodes.count %>
+
+<%= form_for [:admins, @anime, @episode] do |f| %>
+ <%= f.attachment_field :image %>
+<span>第<%= f.text_area :episode_number%> 話</span>
+サブタイトル<%= f.text_field :subtitle%>
+説明文<%= f.text_area :explanation%>
+<%= f.submit%>
+<% end %>
+
+<h4>エピソード一覧</h4>
+<table>
+<tr>
+<th>エピソード番号</th>
+<th>サブタイトル</th>
+<th>総レビュー数</th>
+</tr>
+<% @anime.episodes.each do |episode| %>
+<tr>
+<td><%= episode.episode_number %></td>
+<td><%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %></td>
+<td><%= episode%></td>
+</tr>
+<% end %>
+</table>

@@ -1,0 +1,27 @@
+<h1>Reviews#new</h1>
+<p>Find me in app/views/reviews/new.html.erb</p>
+
+<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path do |f| %>
+  <div class="form-group row" id="star">
+    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+
+  <script>
+  $('#star').raty({
+    size     : 60,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>
+
+<%= f.text_area :comment %>
+<%= f.radio_button :private_status, :公開%>
+<%= f.label :公開 %>
+<%= f.radio_button :private_status, :非公開%>
+<%= f.label :非公開 %>
+<%= f.submit "追加する"%>
+<% end %>

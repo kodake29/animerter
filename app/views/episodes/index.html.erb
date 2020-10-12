@@ -1,0 +1,15 @@
+<h1>Episodes#index</h1>
+<p>Find me in app/views/episodes/index.html.erb</p>
+エピソード一覧
+<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<%= @anime.title %>
+<table>
+<% @episodes.each do |episode| %>
+<tr>
+<td>
+<%= link_to episode.subtitle, anime_episode_path(@anime, episode) %>
+<%= episode.explanation %>
+</td>
+</tr>
+<% end %>
+</table>

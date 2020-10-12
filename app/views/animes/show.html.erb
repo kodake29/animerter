@@ -1,0 +1,9 @@
+<h1>Animes#show</h1>
+<p>Find me in app/views/animes/show.html.erb</p>
+<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<%= @anime.title%>
+<%= @anime.explanation %>
+
+<%= link_to "エピソードを選択", anime_episodes_path(@anime)%>
+<div>マイリスト追加</div>
+<div>視聴可能サービス</div>
