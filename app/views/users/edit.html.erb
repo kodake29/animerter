@@ -1,0 +1,9 @@
+<%= form_for @user, url: user_path(@user) do |f| %>
+
+<%= f.text_field :name %>
+<%= f.radio_button :withdrawal_status, :有効会員 %>
+<%= f.label :有効会員 %>
+<%= f.radio_button :withdrawal_status, :退会 %>
+<%= f.label :退会 %>
+<%= f.submit "修正する"%>
+<% end %>
