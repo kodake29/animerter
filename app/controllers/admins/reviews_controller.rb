@@ -22,6 +22,6 @@ class Admins::ReviewsController < ApplicationController
     def review_params
       params.require(:review).permit(:episode_id, :user_id, :evaluation, :comment, :release_status, :private_status)
     end
-  end
 end
+
 
