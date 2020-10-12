@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   }
   resources :animes do
     resources :episodes do
-      resources :reviews
+      resources :reviews, only:[:index, :edit, :update, :create, :new]
     end
   end
+  get '/review/:id' => "reviews#show"
   resources :users
   resources :my_lists
   resources :requests

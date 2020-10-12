@@ -20,7 +20,6 @@ class ReviewsController < ApplicationController
 
     def show
       @review = Review.find(params[:id])
-
     end
 
     def edit
@@ -28,8 +27,11 @@ class ReviewsController < ApplicationController
     end
 
     def update
+      @anime = Anime.find(params[:anime_id])
+      @episode = Episode.find(params[:episode_id])
       @review = Review.find(params[:id])
-      redirect_to admins_anime_path(@anime)
+      @review.update(review_params)
+      redirect_to anime_episode_path(@anime, @episode)
     end
 
     private

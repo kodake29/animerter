@@ -1,5 +1,25 @@
 <%= @user.name%>
 <%= @user.withdrawal_status%>
-<% @reviews.each do |review| %>
-<%= review.rate %>
+レビュー一覧
+<table>
+<% @reviews.each do |review|%>
+<tr>
+<td>
+<%= review.episode.anime.title %>
+<%= review.episode.episode_number %>話
+<%= review.comment %>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
+<%= link_to review_path(review)%>
+</td>
+</tr>
 <% end %>
+</table>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

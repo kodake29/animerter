@@ -4,9 +4,18 @@
   A simple primary alert—check it out!
 </div>
 <% @animes.each do |anime|%>
-<%= attachment_image_tag(anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<div class="row">
+<div class="jumbotron">
+<div class ="title_image">
+<%= attachment_image_tag(anime, :image, :fill,200,200, fallback: "no_image.jpg", size:'200x200',  format: "jpg")%>
+</div>
+<div class="col-xs-3">
 <h3><%= link_to anime.title, anime_path(anime)%></h3>
-<%= anime.explanation %>
+</div>
+<p><%= anime.explanation %></p>
+</div>
+
+</div>
 <% end %>
 
 <div class="alert alert-secondary" role="alert">
