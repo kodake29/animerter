@@ -5,6 +5,7 @@ class EpisodesController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @anime = Anime.find(params[:anime_id])
     @episodes = Episode.where(anime_id: @anime.id)
     @episode = Episode.find(params[:id])
