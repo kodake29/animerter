@@ -1,11 +1,17 @@
-<h1>アニメーター</h1>
 <%# おすすめアニメ表示 %>
+<h3>おすすめ作品</h3>
 <% @animes.each do |anime|%>
    <div class="container">
     <div class="jumbotron">
      <div class="row">
         <div class ="col-xs-4 title_image">
           <%= attachment_image_tag(anime, :image, :fill,200,200, fallback: "no_image.jpg", size:'200x200',  format: "jpg")%>
+         <% @sum = 0 %>
+<% anime.episodes.each do |episode| %>
+<% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+<% (@sum+=episode_rate) %>
+<% end %>
+<div class="review-rating" data-score="<%= @sum/anime.episodes.count %>"></div>
         </div>
           <div class="col-xs-8 anime-box">
             <h3><%= link_to anime.title, anime_path(anime)%></h3>
@@ -31,7 +37,6 @@
 <%= review.comment %>
 <%= link_to review.user.name, user_path(review.user)%>
 <span><%= time_ago_in_words(review.created_at) %></span>
-<div class="review-rating" data-score="<%= review.rate %>"></div>
 </td>
 </tr>
 <% end %>

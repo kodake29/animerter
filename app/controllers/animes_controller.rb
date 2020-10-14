@@ -7,7 +7,6 @@ class AnimesController < ApplicationController
 
   def show
     @anime = Anime.find(params[:id])
-    @episodes = Episode.all
   end
 
 end

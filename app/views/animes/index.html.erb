@@ -9,8 +9,25 @@
           <div class="col-xs-8 anime-box">
             <h3><%= link_to anime.title, anime_path(anime)%></h3>
             <div class="explanation"><%= anime.explanation %></div>
+            <% @sum = 0 %>
+            <% anime.episodes.each do |episode| %>
+<% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+<% (@sum+=episode_rate) %>
+<% end %>
+
+<div class="review-rating" data-score="<%= @sum/anime.episodes.count %>"></div>
           </div>
       </div>
     </div>
    </div>
   <% end %>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

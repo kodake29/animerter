@@ -3,6 +3,16 @@
 <%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
 <%= @anime.title%>
 <%= @anime.explanation %>
+<% @sum = 0 %>
+<% @anime.episodes.each do |episode| %>
+<% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+<% (@sum+=episode_rate) %>
+<% end %>
+
+<div class="review-rating" data-score="<%= @sum/@anime.episodes.count %>"></div>
+
+
+
 
 <%= link_to "エピソードを選択", anime_episodes_path(@anime)%>
 <div>マイリスト追加</div>
@@ -12,3 +22,12 @@
     <%= link_to "お気に入り解除",anime_my_list_path(@anime),method: :delete %>
     <% end %>
 <div>視聴可能サービス</div>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>
