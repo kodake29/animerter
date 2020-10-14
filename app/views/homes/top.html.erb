@@ -1,0 +1,48 @@
+<h1>アニメーター</h1>
+<%# おすすめアニメ表示 %>
+<% @animes.each do |anime|%>
+   <div class="container">
+    <div class="jumbotron">
+     <div class="row">
+        <div class ="col-xs-4 title_image">
+          <%= attachment_image_tag(anime, :image, :fill,200,200, fallback: "no_image.jpg", size:'200x200',  format: "jpg")%>
+        </div>
+          <div class="col-xs-8 anime-box">
+            <h3><%= link_to anime.title, anime_path(anime)%></h3>
+            <div class="explanation"><%= anime.explanation %></div>
+          </div>
+      </div>
+    </div>
+   </div>
+  <% end %>
+
+<div class="container">
+<%# 最新の投稿 %>
+<h3>最新の投稿</h3>
+
+<table class="table table-striped">
+<% @reviews.each do |review|%>
+<tr>
+<td>
+<%= attachment_image_tag(review.episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
+<%= review.episode.anime.title %>
+<span>第<%= review.episode.episode_number %>話</span>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
+<%= review.comment %>
+<%= link_to review.user.name, user_path(review.user)%>
+<span><%= time_ago_in_words(review.created_at) %></span>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
+</td>
+</tr>
+<% end %>
+</table>
+</div>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

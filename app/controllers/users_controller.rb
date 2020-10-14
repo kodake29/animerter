@@ -1,14 +1,15 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @reviews = Review.where(user_id: @user.id)
+    @reviews = @user.reviews
+    @my_lists = MyList.where(user_id: @user.id)
   end
 
   def edit
   	@user = current_user
   end
 
-    def update
+  def update
     @user = current_user
     if @user.update(user_params)
       redirect_to user_path
@@ -30,6 +31,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  params.require(:user).permit(:name, :image)
+    params.require(:user).permit(:name, :image)
   end
 end

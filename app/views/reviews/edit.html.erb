@@ -10,8 +10,13 @@
 <%= f.label :公開 %>
 <%= f.radio_button :private_status, :非公開%>
 <%= f.label :非公開 %>
-<%= f.submit "追加する"%>
+<%= f.submit "変更する"%>
+<%= link_to anime_episode_review_path, method: :delete do %>
+<button class="btn btn-danger">削除</button>
+						<% end %>
+
 <% end %>
+
   <script>
   $('#star').raty({
     size     : 60,

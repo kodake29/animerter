@@ -4,12 +4,112 @@
     <title>Animerter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+        <div class="conteiner">
+            <div class="row" style="margin-right: 60px">
+
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if admin_signed_in? %>
+                        <nav class="nav navber-nav navbar-left">
+                            <p class="title">
+
+                            </p>
+                        </nav>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">商品一覧</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">会員一覧</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">注文履歴一覧</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">ジャンル一覧</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">ログアウト</button>
+
+                        </li>
+                        <% elsif user_signed_in? %>
+                        <nav class="nav navber-nav navbar-left">
+                            <p class="title">
+
+                            </p>
+                         </nav>
+                        <li>
+                            <p class="welcome">ようこそ、
+                                <%= current_user.name%>さん!</p>
+                        </li>
+                        <li>
+<%= link_to user_path(current_user) do%>
+                            <button type="button" class="btn btn-secondary">マイページ</button>
+<% end %>
+                        </li>
+                        <li>
+<%= link_to animes_path do %>
+                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
+<% end %>
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">カート</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">ログアウト</button>
+
+                        </li>
+<% else %>
+                        <nav class="nav navber-nav navbar-left">
+                            <p class="title">
+
+                            </p>
+                         </nav>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">About</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">商品一覧</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">新規登録</button>
+
+                        </li>
+                        <li>
+
+                            <button type="button" class="btn btn-secondary">ログイン</button>
+
+                        </li>
+<% end %>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+<div class="margin" style="margin-top: 60px"></div>
     <%= yield %>
   </body>
 </html>

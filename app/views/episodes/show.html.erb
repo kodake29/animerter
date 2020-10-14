@@ -3,7 +3,9 @@
 エピソード詳細
 <%= @episode.subtitle %>
 <%= @episode.explanation %>
-レビューする
+
+<%= link_to "レビューする", new_anime_episode_review_path(@episode.anime, @episode)%>
+
 
 レビュー一覧
 <table>

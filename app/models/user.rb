@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
          enum display_status: {有効会員:0, 退会:1}
 
-         has_many :reviews
+         has_many :reviews, dependent: :destroy
          has_many :requests
-         has_many :my_lists
-
+         has_many :my_lists, dependent: :destroy
+         has_many :animes, through: :my_lists
 
 
 end

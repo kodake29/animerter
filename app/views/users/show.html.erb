@@ -9,11 +9,15 @@
 <%= review.episode.episode_number %>話
 <%= review.comment %>
 <div class="review-rating" data-score="<%= review.rate %>"></div>
-<%= link_to review_path(review)%>
+<%= link_to "edit", edit_anime_episode_review_path(review.episode.anime, review.episode, review)%>
 </td>
 </tr>
 <% end %>
 </table>
+<p>お気に入り</p>
+<% @my_lists.each do |my_list| %>
+<%= link_to my_list.anime.title, anime_path(my_list.anime) %>
+<% end %>
 <script>
   $('.review-rating').raty({
     readOnly: true,

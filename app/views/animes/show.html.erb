@@ -6,4 +6,9 @@
 
 <%= link_to "エピソードを選択", anime_episodes_path(@anime)%>
 <div>マイリスト追加</div>
+    <% if !MyList.exists?(user_id:current_user.id, anime_id: @anime.id) %>
+    <%= link_to "お気に入り",anime_my_lists_path(@anime),method: :post %>
+    <% else %>
+    <%= link_to "お気に入り解除",anime_my_list_path(@anime),method: :delete %>
+    <% end %>
 <div>視聴可能サービス</div>

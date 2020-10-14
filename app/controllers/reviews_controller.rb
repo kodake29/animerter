@@ -34,6 +34,12 @@ class ReviewsController < ApplicationController
       redirect_to anime_episode_path(@anime, @episode)
     end
 
+    def destroy
+      @review = Review.find(params[:id])
+      @review.destroy
+      redirect_to user_path(current_user)
+    end
+
     private
     def review_params
       params.require(:review).permit(:anime_id, :episode_id, :rate, :comment, :release_status, :private_status)

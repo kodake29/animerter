@@ -25,7 +25,7 @@
 <tr>
 <td><%= episode.episode_number %></td>
 <td><%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %></td>
-<td><%= episode%></td>
+<td><%= episode.reviews.count%></td>
 </tr>
 <% end %>
 </table>
