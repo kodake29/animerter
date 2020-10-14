@@ -19,7 +19,7 @@
                         <% if admin_signed_in? %>
                         <nav class="nav navber-nav navbar-left">
                             <p class="title">
-
+     <%= link_to "animerter", root_path%>
                             </p>
                         </nav>
                         <li>
@@ -50,6 +50,7 @@
                         <% elsif user_signed_in? %>
                         <nav class="nav navber-nav navbar-left">
                             <p class="title">
+                            <%= link_to "animerter", root_path%>
 
                             </p>
                          </nav>
@@ -80,7 +81,7 @@
 <% else %>
                         <nav class="nav navber-nav navbar-left">
                             <p class="title">
-
+     <%= link_to "animerter", root_path%>
                             </p>
                          </nav>
                         <li>
@@ -90,7 +91,7 @@
                         </li>
                         <li>
 
-                            <button type="button" class="btn btn-secondary">商品一覧</button>
+                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
 
                         </li>
                         <li>
