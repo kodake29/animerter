@@ -74,35 +74,35 @@
 
                         </li>
                         <li>
-
+<%= link_to(destroy_admin_session_path, method: :delete) do %>
                             <button type="button" class="btn btn-secondary">ログアウト</button>
-
+<% end %>
                         </li>
 <% else %>
                         <nav class="nav navber-nav navbar-left">
                             <p class="title">
-     <%= link_to "animerter", root_path%>
+     <h1><%= link_to "animerter", root_path%></h1>
                             </p>
                          </nav>
                         <li>
-
+<%= link_to(about_path) do %>
                             <button type="button" class="btn btn-secondary">About</button>
-
+<% end %>
                         </li>
                         <li>
-
+<%= link_to animes_path do %>
                             <button type="button" class="btn btn-secondary">アニメ一覧</button>
-
+<% end %>
                         </li>
                         <li>
-
+<%= link_to new_user_registration_path do %>
                             <button type="button" class="btn btn-secondary">新規登録</button>
-
+<% end %>
                         </li>
                         <li>
-
+<%= link_to new_user_session_path do %>
                             <button type="button" class="btn btn-secondary">ログイン</button>
-
+<% end %>
                         </li>
 <% end %>
                     </ul>
