@@ -1,0 +1,20 @@
+<div class="withdrawel_center">
+    <h3 class="confirmation_text">本当に退会しますか?</h3>
+    <p>退会すると、会員情報や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は、「退会する」をクリックしてください。</p>
+    <table class="withdrawel_button">
+        <tr>
+            <td>
+                <%= link_to user_path(@user) do %>
+                <button class="dont_withdrawel btn btn-primary">退会しない</button>
+                <% end %>
+            </td>
+            <td>
+                <%= link_to(users_withdraw_path, method: :patch) do %>
+                <button class="comfirm_withdrawel btn btn-danger ">退会する</button>
+                <% end %>
+            </td>
+        </tr>
+    </table>
+</div>

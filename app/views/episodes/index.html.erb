@@ -7,6 +7,7 @@
 <% @episodes.each do |episode| %>
 <tr>
 <td>
+<%= attachment_image_tag(episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
 <%= link_to episode.subtitle, anime_episode_path(@anime, episode) %>
 <%= episode.explanation %>
 </td>

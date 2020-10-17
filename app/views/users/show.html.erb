@@ -1,20 +1,31 @@
-<%= @user.name%>
-<%= @user.withdrawal_status%>
+<h2><%= @user.name%>さんのページ</h2>
+<% if @user.withdrawal_status == 0 %>
+            <p class="label label-primary">有効会員</p>
+            <% else %>
+            <p>退会済</p>
+            <% end %>
+
+             <%= link_to(edit_user_path) do %>
+            <button type="button" class="btn btn-primary">編集する</button>
+            <% end %>
+
 レビュー一覧
-<table>
 <% @reviews.each do |review|%>
-<tr>
-<td>
-<%= review.episode.anime.title %>
-<%= review.episode.episode_number %>話
-<%= review.comment %>
+<div class="table">
+<%= attachment_image_tag(review.episode, :image, :fill,100,100, fallback: "no_image.jpg", size:'100x100',  format: "jpg")%>
 <div class="review-rating" data-score="<%= review.rate %>"></div>
-<%= link_to "edit", edit_anime_episode_review_path(review.episode.anime, review.episode, review)%>
-</td>
-</tr>
+<h4><%= review.episode.anime.title %>
+<span>第<%= review.episode.episode_number %>話</span></h4>
+<div class="comment"><%= review.comment %></div>
+<div class="created">
+<span><%= time_ago_in_words(review.created_at) %></span></div>
+<div class="edit"><%= link_to "edit", edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning"%></div>
+</div>
 <% end %>
-</table>
-<p>お気に入り</p>
+
+<h4>高く評価した作品</h4>
+
+<h4>お気に入り</h4>
 <% @my_lists.each do |my_list| %>
 <%= link_to my_list.anime.title, anime_path(my_list.anime) %>
 <% end %>

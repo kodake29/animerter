@@ -18,41 +18,40 @@
                     <ul class="nav navbar-nav navbar-right">
                         <% if admin_signed_in? %>
                         <nav class="nav navber-nav navbar-left">
-                            <p class="title">
-     <%= link_to "animerter", root_path%>
-                            </p>
+
+
+                            <div class="title">
+                              <h1><%= link_to "animerter", admins_root_path%></h1>
+                            </div>
+
                         </nav>
                         <li>
-
-                            <button type="button" class="btn btn-secondary">商品一覧</button>
-
+<%= link_to admins_animes_path do %>
+                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
+<% end %>
                         </li>
                         <li>
-
-                            <button type="button" class="btn btn-secondary">会員一覧</button>
-
+<%= link_to admins_users_path do %>
+                            <button type="button" class="btn btn-secondary">ユーザ一覧</button>
+<% end %>
                         </li>
                         <li>
-
-                            <button type="button" class="btn btn-secondary">注文履歴一覧</button>
-
+<%= link_to admins_reviews_path do %>
+                            <button type="button" class="btn btn-secondary">レビュー一覧</button>
+<% end %>
                         </li>
                         <li>
-
-                            <button type="button" class="btn btn-secondary">ジャンル一覧</button>
-
-                        </li>
-                        <li>
-
+<%= link_to(destroy_admin_session_path, method: :delete) do %>
                             <button type="button" class="btn btn-secondary">ログアウト</button>
-
+<% end %>
                         </li>
                         <% elsif user_signed_in? %>
                         <nav class="nav navber-nav navbar-left">
-                            <p class="title">
-                            <%= link_to "animerter", root_path%>
 
-                            </p>
+                            <div class="title">
+                              <h1><%= link_to "animerter", root_path%></h1>
+                            </div>
+
                          </nav>
                         <li>
                             <p class="welcome">ようこそ、
@@ -70,13 +69,10 @@
                         </li>
                         <li>
 
-                            <button type="button" class="btn btn-secondary">カート</button>
-
-                        </li>
-                        <li>
 <%= link_to(destroy_admin_session_path, method: :delete) do %>
                             <button type="button" class="btn btn-secondary">ログアウト</button>
 <% end %>
+
                         </li>
 <% else %>
                         <nav class="nav navber-nav navbar-left">
@@ -85,6 +81,7 @@
                             </p>
                          </nav>
                         <li>
+
 <%= link_to(about_path) do %>
                             <button type="button" class="btn btn-secondary">About</button>
 <% end %>
@@ -103,6 +100,7 @@
 <%= link_to new_user_session_path do %>
                             <button type="button" class="btn btn-secondary">ログイン</button>
 <% end %>
+
                         </li>
 <% end %>
                     </ul>
@@ -110,7 +108,8 @@
             </div>
         </div>
     </header>
-<div class="margin" style="margin-top: 60px"></div>
-    <%= yield %>
+<div class="margin" style="margin-top: 100px"></div>
+<div class="container"><%= yield %></div>
+
   </body>
 </html>

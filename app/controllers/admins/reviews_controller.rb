@@ -15,7 +15,11 @@ class Admins::ReviewsController < ApplicationController
 
     def update
       @review = Review.find(params[:id])
-      redirect_to admins_anime_path(@anime)
+      if @review.update(review_params)
+         redirect_to admins_reviews_path
+      else
+        redirect_to root_path
+      end
     end
 
     private

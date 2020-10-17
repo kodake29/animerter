@@ -21,7 +21,6 @@ class Admins::AnimesController < ApplicationController
 
   def index
   @animes = Anime.all
-  @episodes = Episode.all
   end
 
   def show

@@ -1,10 +1,9 @@
 
-<table>
+<table class="table table-striped">
 <tr>
 <th>作品ID</th>
 <th>作品名</th>
 <th>エピソード数</th>
-<th>総レビュー数</th>
 <th>公開ステータス</th>
 </tr>
 <% @animes.each do |anime| %>
@@ -12,10 +11,9 @@
 <td><%= anime.id %></td>
 <td><%= link_to anime.title,admins_anime_path(anime) %></td>
 <td><%= anime.episodes.count %></td>
-<td></td>
 <td><%= anime.display_status%></td>
 </tr>
 <% end %>
 </table>
+<%= link_to "新規作品追加", new_admins_anime_path ,class: "btn btn-info"%>
 
-<%= link_to "新規作品追加", new_admins_anime_path %>

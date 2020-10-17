@@ -1,41 +1,46 @@
-<h1>アニメーター</h1>
+<div class="container">
 <%# おすすめアニメ表示 %>
-<% @animes.each do |anime|%>
-   <div class="container">
-    <div class="jumbotron">
-     <div class="row">
-        <div class ="col-xs-4 title_image">
+  <h3>おすすめ作品</h3>
+      <div class="flex">
+   <% @animes.each do |anime|%>
+<div>
+<h3><%= link_to anime.title, anime_path(anime)%></h3>
+<div class="image">
           <%= attachment_image_tag(anime, :image, :fill,200,200, fallback: "no_image.jpg", size:'200x200',  format: "jpg")%>
-        </div>
-          <div class="col-xs-8 anime-box">
-            <h3><%= link_to anime.title, anime_path(anime)%></h3>
-            <div class="explanation"><%= anime.explanation %></div>
           </div>
-      </div>
-    </div>
+          <% @sum = 0 %>
+          <% anime.episodes.each do |episode| %>
+            <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+            <% (@sum+=episode_rate) %>
+          <% end %>
+          <% if anime.episodes.count != 0 %>
+            <div class="review-rating" data-score="<%= @sum/anime.episodes.count %>"></div>
+          <% end %>
+          </div>
+   <% end %>
    </div>
-  <% end %>
+</div>
 
 <div class="container">
+<div class="col-xs-2"></div>
 <%# 最新の投稿 %>
+<div class="col-xs-8">
 <h3>最新の投稿</h3>
 
-<table class="table table-striped">
+
 <% @reviews.each do |review|%>
-<tr>
-<td>
-<%= attachment_image_tag(review.episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
-<%= review.episode.anime.title %>
-<span>第<%= review.episode.episode_number %>話</span>
+<div class="table">
+<%= attachment_image_tag(review.episode, :image, :fill,100,100, fallback: "no_image.jpg", size:'100x100',  format: "jpg")%>
 <div class="review-rating" data-score="<%= review.rate %>"></div>
-<%= review.comment %>
-<%= link_to review.user.name, user_path(review.user)%>
-<span><%= time_ago_in_words(review.created_at) %></span>
-<div class="review-rating" data-score="<%= review.rate %>"></div>
-</td>
-</tr>
+<h4><%= review.episode.anime.title %>
+<span>第<%= review.episode.episode_number %>話</span></h4>
+<div class="comment"><%= review.comment %></div>
+<div class="created"><%= link_to review.user.name, user_path(review.user)%>
+<span><%= time_ago_in_words(review.created_at) %></span></div>
+</div>
 <% end %>
-</table>
+</div>
+<div class="col-xs-2"></div>
 </div>
 <script>
   $('.review-rating').raty({

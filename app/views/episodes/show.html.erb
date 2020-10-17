@@ -3,6 +3,7 @@
 エピソード詳細
 <%= @episode.subtitle %>
 <%= @episode.explanation %>
+<div class="review-rating" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div>
 
 <%= link_to "レビューする", new_anime_episode_review_path(@episode.anime, @episode)%>
 
@@ -15,6 +16,7 @@
 <%= review.comment %>
 <%= link_to review.user.name, user_path(review.user)%>
 <div class="review-rating" data-score="<%= review.rate %>"></div>
+<%= review.release_status %>
 </td>
 </tr>
 <% end %>

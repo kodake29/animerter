@@ -1,6 +1,11 @@
-<%= link_to @animes.count, admins_animes_path %>
-<%= link_to @episodes.count %>
-<%= link_to @reviews.count %>
-<%= @users.count %>
-<%= @requests.count %>
+<div class="flex">
+<div><h2>総作品数</h2><%= link_to @animes.count, admins_animes_path %>
+<h4>総エピソード数</h4><%= @episodes.count %></div>
+<div><h2>総レビュー数</h2><%= link_to @reviews.count, admins_reviews_path %></div>
+<div><h2>総ユーザ数</h2><%= link_to @users.count, admins_users_path %></div>
+
+
+
+
+</div>
 

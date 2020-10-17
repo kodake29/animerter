@@ -1,11 +1,27 @@
+
 <h3>新規投稿</h3>
+<table>
 <%= form_for [:admins, @anime] do |f| %>
- <%= f.attachment_field :image %>
-<%= f.text_field :title %>
-<%= f.text_area :explanation %>
-<%= f.radio_button :display_status, :公開%>
-<%= f.label :公開 %>
-<%= f.radio_button :display_status, :非公開%>
-<%= f.label :非公開 %>
-<%= f.submit "追加する"%>
+<tr>
+<td>イメージ画像</td>
+<td><%= f.attachment_field :image %></td>
+</tr>
+<tr>
+<td>タイトル</td>
+<td><%= f.text_area :title, rows:1, cols:40 %></td>
+</tr>
+<tr>
+<td>あらすじ</td>
+<td><%= f.text_area :explanation, rows:10, cols:40 %></td>
+</tr>
+<tr>
+<td>公開ステータス</td>
+<td><%= f.radio_button :display_status, :公開%>
+<%= f.label :公開 %></td>
+<td><%= f.radio_button :display_status, :非公開%>
+<%= f.label :非公開 %></td>
+</tr>
+
+<td><%= f.submit "追加する"%></td>
 <% end %>
+</table>

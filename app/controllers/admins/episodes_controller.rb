@@ -26,8 +26,8 @@ class Admins::EpisodesController < ApplicationController
   end
 
   def update
-    @anime = Anime.find(params[:anime_id])
     @episode = Episode.find(params[:id])
+    @anime = @episode.anime_id
     @episode.update(episode_params)
     redirect_to admins_animes_path
   end

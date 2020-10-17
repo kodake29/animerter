@@ -1,0 +1,18 @@
+
+<table class="table table-striped">
+<tr>
+<th>ユーザ名</th>
+<th>作品名</th>
+<th>エピソード番号</th>
+<th>コメント</th>
+</tr>
+<% @reviews.each do |review| %>
+<tr>
+<td><%= link_to review.user.name, admins_user_path(review.user) %></td>
+<td><%= link_to review.episode.anime.title, admins_anime_path(review.episode.anime) %></td>
+<td><%=link_to review.episode.episode_number, admins_anime_episode_path(review.episode.anime, review.episode) %></td>
+<td><%=link_to review.comment, edit_admins_review_path(review) %></td>
+</tr>
+<% end %>
+</table>
+

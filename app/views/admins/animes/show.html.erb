@@ -5,17 +5,35 @@
 
 <h4>エピソード数</h4>
 <%= @anime.episodes.count %>
-
-<%= form_for [:admins, @anime, @episode] do |f| %>
- <%= f.attachment_field :image %>
-<span>第<%= f.text_area :episode_number%> 話</span>
-サブタイトル<%= f.text_field :subtitle%>
-説明文<%= f.text_area :explanation%>
-<%= f.submit%>
-<% end %>
-
-<h4>エピソード一覧</h4>
+<div class="row">
+<div class="col-xs-5">
+<h4>新規エピソード追加</h4>
 <table>
+<%= form_for [:admins, @anime, @episode] do |f| %>
+<tr>
+<td>イメージ画像</td>
+<td><%= f.attachment_field :image %></td>
+</tr>
+<tr>
+<td></td>
+<td>第<%= f.text_area :episode_number, rows:1, cols:2%> 話</td>
+</tr>
+<tr>
+<td>サブタイトル</td>
+<td><%= f.text_area :subtitle, rows:1, cols:40%></td>
+</tr>
+<tr>
+<td>説明文</td>
+<td><%= f.text_area :explanation, rows:10, cols:40%></td>
+</tr>
+
+<td><%= f.submit%></td>
+<% end %>
+</table></div>
+
+<div class="col-xs-5">
+<h4>エピソード一覧</h4>
+<table class="table table-striped">
 <tr>
 <th>エピソード番号</th>
 <th>サブタイトル</th>
@@ -29,3 +47,7 @@
 </tr>
 <% end %>
 </table>
+</div>
+
+
+</div>

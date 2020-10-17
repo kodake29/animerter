@@ -10,8 +10,11 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @review.episode_id = @episode.id
       @review.user_id = current_user.id
-      @review.save
-      redirect_to anime_episode_path(@anime, @episode)
+      if @review.save
+         redirect_to anime_episode_path(@anime, @episode)
+      else
+        redirect_to anime_episode_path(@anime, @episode)
+      end
     end
 
     def index
@@ -30,8 +33,11 @@ class ReviewsController < ApplicationController
       @anime = Anime.find(params[:anime_id])
       @episode = Episode.find(params[:episode_id])
       @review = Review.find(params[:id])
-      @review.update(review_params)
-      redirect_to anime_episode_path(@anime, @episode)
+      if @review.update(review_params)
+         redirect_to anime_episode_path(@anime, @episode)
+      else
+        redirect_to root_path
+      end
     end
 
     def destroy

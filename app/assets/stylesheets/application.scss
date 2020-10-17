@@ -16,8 +16,65 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ body{
+    background-color: #D8D8D8;
+ }
+
  .anime-box {
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px #4ec4d3;
  }
+
+
+ .flex {
+   display: flex;
+   background-color: #00c7ce;
+   display: flex; /* 追加 */
+   flex-wrap: wrap;
+   justify-content: center; /* 追加 */
+  align-items: center;
+
+ }
+ .flex > div {
+   width: 25%;
+   height: 300px;
+   margin: 10px;
+   background-color: #fff;
+ }
+ .image{
+    margin: 0 auto;
+ }
+ .table{
+    border: double 10px #0000ff;
+    position:  relative;
+    background-color: #fff;
+ }
+
+ h4{
+   position:  absolute;
+   left:  130px;
+   top: 10px;
+   border-bottom:double 5px #4ec4d3;
+ }
+ .comment{
+   position:  absolute;
+   left:  130px;
+   top: 55px;
+ }
+ .created{
+   position:  absolute;
+   right:  50px;
+   bottom: 5px;
+ }
+ .edit{
+   position:  absolute;
+   right:  50px;
+   bottom: 50px;
+ }
+
+.anime-title{
+   position:  absolute;
+   left:  220px;
+   top: 10px;
+}
