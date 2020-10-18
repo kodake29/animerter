@@ -12,10 +12,9 @@ class Anime < ApplicationRecord
       return all.order(created_at: :DESC)
     when 'old'
       return all.order(created_at: :ASC)
-    when 'good'
-      return find(Favorite.group(:post_id).order(Arel.sql('count(post_id) desc')).pluck(:post_id))
+    # when 'good'
+    #   return all.order(anime.episode.count: :DESC)
     end
   end
-  # マイリスト追加済みにログインユーザが含まれるか
 
 end

@@ -39,6 +39,7 @@
 <span><%= time_ago_in_words(review.created_at) %></span></div>
 </div>
 <% end %>
+<%= paginate @reviews %>
 </div>
 <div class="col-xs-2"></div>
 </div>

@@ -1,0 +1,12 @@
+<% reviews.each do |review|%>
+<div class="table">
+<%= attachment_image_tag(review.episode, :image, :fill,100,100, fallback: "no_image.jpg", size:'100x100',  format: "jpg")%>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
+<h4><%= review.episode.anime.title %>
+<span>第<%= review.episode.episode_number %>話</span></h4>
+<div class="comment"><%= review.comment %></div>
+<div class="created">
+<span><%= time_ago_in_words(review.created_at) %></span></div>
+<div class="edit"><%= link_to "edit", edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning"%></div>
+</div>
+<% end %>

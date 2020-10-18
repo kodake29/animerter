@@ -1,7 +1,7 @@
 class AnimesController < ApplicationController
 
   def index
-    @animes = Anime.where(display_status: 0)
+    @animes = Anime.page(params[:page]).reverse_order.where(display_status: 0)
     @episodes = Episode.all
   end
 
