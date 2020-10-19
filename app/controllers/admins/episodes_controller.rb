@@ -8,8 +8,11 @@ class Admins::EpisodesController < ApplicationController
     @anime = Anime.find(params[:anime_id])
     @episode = Episode.new(episode_params)
     @episode.anime_id = @anime.id
-    @episode.save
-    redirect_to admins_anime_path(@anime)
+     if @episode.save
+        redirect_to admins_anime_path(@anime)
+     else
+      render 'admins/animes/show'
+     end
   end
 
   def index
@@ -28,8 +31,11 @@ class Admins::EpisodesController < ApplicationController
   def update
     @episode = Episode.find(params[:id])
     @anime = @episode.anime_id
-    @episode.update(episode_params)
-    redirect_to admins_animes_path
+     if @episode.update(episode_params)
+        redirect_to admins_anime_path(@anime)
+     else
+      render 'edit'
+     end
   end
 
   private

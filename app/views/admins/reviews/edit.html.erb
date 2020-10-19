@@ -1,23 +1,26 @@
+<div class="col-xs-4"></div>
+<div class="col-xs-4">
+<h3>レビュー詳細</h3>
+
+  <div class="review-rating" data-score="<%= @review.rate %>"></div>
+<h5>コメント</h5>
+<%= @review.comment %>
 <%= form_for @review, url: admins_review_path(@review) do |f| %>
-  <div class="form-group row" id="star">
-    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
-    <%= f.hidden_field :rate, id: :review_star %>
-  </div>
-<%= f.text_area :comment %>
 <%= f.radio_button :release_status, :許可%>
 <%= f.label :許可 %>
 <%= f.radio_button :release_status, :非公開%>
 <%= f.label :非公開 %>
-<%= f.submit "変更する"%>
+<div><%= f.submit "変更する"%></div>
 <% end %>
+</div>
 
-  <script>
-  $('#star').raty({
-    size     : 60,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'review[rate]',
-    half: true,
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
   });
-  </script>
+</script>

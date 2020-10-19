@@ -1,3 +1,4 @@
+<%= render 'layouts/error_messages', model: @episode %>
 <%= form_for @episode, url: admins_anime_episodes_path, method: :patch, do |f| %>
  <%= f.attachment_field :image %>
 <span>第<%= f.text_area :episode_number%> 話</span>

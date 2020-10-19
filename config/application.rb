@@ -15,14 +15,8 @@ module Animerter2
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.time_zone = 'Tokyo'
+
   end
 end
 
-module TimeFormatSandbox
-  class Application < Rails::Application
-    # ...
-
-    # タイムゾーンを日本時間に設定
-    config.time_zone = 'Asia/Tokyo'
-  end
-end

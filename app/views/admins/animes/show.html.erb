@@ -3,36 +3,30 @@
 <%= @anime.explanation %>
 <%= link_to "編集する", edit_admins_anime_path(@anime)%>
 
-<h4>エピソード数</h4>
-<%= @anime.episodes.count %>
+
+
 <div class="row">
 <div class="col-xs-5">
 <h3>新規エピソード追加</h3>
-<table>
+<%= render 'layouts/error_messages', model: @episode %>
 <%= form_for [:admins, @anime, @episode] do |f| %>
-<tr>
-<td>イメージ画像</td>
-<td><%= f.attachment_field :image %></td>
-</tr>
-<tr>
-<td></td>
-<td>第<%= f.text_area :episode_number, rows:1, cols:2%> 話</td>
-</tr>
-<tr>
-<td>サブタイトル</td>
-<td><%= f.text_area :subtitle, rows:1, cols:40%></td>
-</tr>
-<tr>
-<td>説明文</td>
-<td><%= f.text_area :explanation, rows:10, cols:40%></td>
-</tr>
 
-<td><%= f.submit%></td>
+<h5>イメージ画像</h5>
+<%= f.attachment_field :image %>
+<h5>エピソード番号</h5>
+第<%= f.text_field :episode_number, rows:1, cols:1%> 話
+<h5>サブタイトル</h5>
+<%= f.text_area :subtitle, rows:1, cols:40%>
+<h5>説明文</h5>
+<%= f.text_area :explanation, rows:10, cols:40%>
+<div><%= f.submit "エピソード追加"%></div>
+
 <% end %>
-</table></div>
+</div>
 
 <div class="col-xs-5">
-<h3>エピソード一覧</h3>
+<h3>エピソード一覧(全<%= @anime.episodes.count %>話)</h3>
+
 <table class="table table-striped">
 <tr>
 <th>エピソード番号</th>
@@ -41,7 +35,7 @@
 </tr>
 <% @anime.episodes.each do |episode| %>
 <tr>
-<td><%= episode.episode_number %></td>
+<td><%= link_to episode.episode_number, admins_anime_episode_path(@anime, episode) %></td>
 <td><%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %></td>
 <td><%= episode.reviews.count%></td>
 </tr>

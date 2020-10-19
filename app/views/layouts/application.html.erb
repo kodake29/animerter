@@ -10,9 +10,9 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
+    <header class="navbar navbar-fixed-top" style="background-color: #C0C0C0;">
         <div class="conteiner">
-            <div class="row" style="margin-right: 60px">
+            <div class="row" style="margin-right: 560px">
 
                 <nav>
                     <ul class="nav navbar-nav navbar-right">
@@ -20,8 +20,8 @@
                         <nav class="nav navber-nav navbar-left">
 
 
-                            <div class="title">
-                              <h1><%= link_to "animerter", admins_root_path%></h1>
+                            <div class="logo">
+                               <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
                             </div>
 
                         </nav>
@@ -48,15 +48,20 @@
                         <% elsif user_signed_in? %>
                         <nav class="nav navber-nav navbar-left">
 
-                            <div class="title">
-                              <h1><%= link_to "animerter", root_path%></h1>
+                            <div class="logo">
+                                <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
                             </div>
+
 
                          </nav>
                         <li>
                             <p class="welcome">ようこそ、
                                 <%= current_user.name%>さん!</p>
                         </li>
+                        <li>
+                        <%= link_to(about_path) do %>
+                            <button type="button" class="btn btn-secondary">About</button>
+<% end %></li>
                         <li>
 <%= link_to user_path(current_user) do%>
                             <button type="button" class="btn btn-secondary">マイページ</button>
@@ -76,8 +81,8 @@
                         </li>
 <% else %>
                         <nav class="nav navber-nav navbar-left">
-                            <p class="title">
-     <h1><%= link_to "animerter", root_path%></h1>
+                            <p class="logo">
+    <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
                             </p>
                          </nav>
                         <li>
@@ -108,7 +113,8 @@
             </div>
         </div>
     </header>
-<div class="margin" style="margin-top: 100px"></div>
+<div class="margin" style="margin-top: 150px"></div>
+
 <div class="container"><%= yield %></div>
 
   </body>

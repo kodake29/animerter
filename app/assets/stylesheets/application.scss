@@ -16,11 +16,42 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ header{
+  position:  relative;
+  height: 130px;
+  opacity:0.9;
+ }
+ .logo{
+  opacity:1;
+  top:5px;
+  left:5px;
+ }
+
  body{
     background-color: #D8D8D8;
  }
 
+ .about-title{
+   margin: 10px 20px 30px;
+   width:11%;
+   border-bottom: solid 2px red;
+ }
+
+ .about-text{
+   margin: 250px auto 20px;
+   border-style: none;
+ }
+ .about-text2{
+  margin: 350px auto 20px;
+  border-style: none;
+}
+.about-text3{
+  margin: 400px auto 20px;
+  border-style: none;
+}
+
  .anime-box {
+
     padding: 0.5em 1em;
     margin: 2em 0;
     border: double 5px #4ec4d3;
@@ -29,24 +60,24 @@
 
  .flex {
    display: flex;
-   background-color: #00c7ce;
+   background-image: url(film.png);
+   background-size: cover;
    display: flex; /* 追加 */
    flex-wrap: wrap;
    justify-content: center; /* 追加 */
   align-items: center;
-
+  padding: 50px;
  }
- .flex > div {
+ .flex > .anime-box {
    width: 25%;
    height: 300px;
-   margin: 10px;
-   background-color: #fff;
+   margin: 5px;
+   background-color: red;
  }
  .image{
     margin: 0 auto;
  }
  .table{
-    border: double 10px #0000ff;
     position:  relative;
     background-color: #fff;
  }
@@ -77,4 +108,12 @@
    position:  absolute;
    left:  220px;
    top: 10px;
+}
+// バリデーションメッセージ
+.alert {
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #990000;
+  padding:12px; font-weight:850;
 }

@@ -15,12 +15,15 @@ class Admins::AnimesController < ApplicationController
 
   def create
   @anime = Anime.new(anime_params)
-  @anime.save
-  redirect_to admins_animes_path
+   if @anime.save
+      redirect_to admins_animes_path
+   else
+    render "new"
+   end
   end
 
   def index
-  @animes = Anime.all
+  @animes = Anime.page(params[:page]).reverse_order
   end
 
   def show
@@ -35,8 +38,11 @@ class Admins::AnimesController < ApplicationController
 
   def update
     @anime = Anime.find(params[:id])
-    @anime.update(anime_params)
-    redirect_to admins_anime_path(@anime)
+     if @anime.update(anime_params)
+        redirect_to admins_anime_path(@anime)
+     else
+      render 'edit'
+     end
   end
 
   private

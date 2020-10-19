@@ -1,9 +1,5 @@
 <h2><%= @user.name%>さんのページ</h2>
-<% if @user.withdrawal_status == 0 %>
-            <p class="label label-primary">有効会員</p>
-            <% else %>
-            <p>退会済</p>
-            <% end %>
+<%= @user.withdrawal_status %>
 
              <%= link_to(edit_user_path) do %>
             <button type="button" class="btn btn-primary">編集する</button>

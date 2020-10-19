@@ -6,6 +6,9 @@ class Anime < ApplicationRecord
 
   enum display_status: {公開:0, 非公開:1}
 
+  validates :title, length: { in: 1..40 }
+  validates :explanation, length: { maximum: 400 }
+
   def self.sort(selection)
     case selection
     when 'new'
