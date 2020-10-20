@@ -1,11 +1,21 @@
-<div class="flex">
-<div><h2>総作品数</h2><%= link_to @animes.count, admins_animes_path %>
-<h4>総エピソード数</h4><%= @episodes.count %></div>
-<div><h2>総レビュー数</h2><%= link_to @reviews.count, admins_reviews_path %></div>
-<div><h2>総ユーザ数</h2><%= link_to @users.count, admins_users_path %></div>
+<h2>管理者画面</h2>
 
+<div class="admins-top row">
+<div class="top-box col-xs-4">
+<i class="fas fa-film fa-7x"></i>
+<h2>作品数</h2>
+<h3><%= link_to @animes.count, admins_animes_path %>本</h3>
+</div>
+<div class="top-box col-xs-4">
+<i class="far fa-comments fa-7x"></i>
+<h2>レビュー数</h2>
+<h3><%= link_to @reviews.count,admins_reviews_path %>件</h3>
+</div>
 
-
-
+<div class="top-box col-xs-4">
+<i class="fas fa-users fa-7x"></i>
+<h2>ユーザ数</h2>
+<h3><%= link_to @users.count, admins_users_path %>名</h3>
+</div>
 </div>
 

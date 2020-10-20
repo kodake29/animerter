@@ -1,16 +1,26 @@
-<h1>Episodes#index</h1>
-<p>Find me in app/views/episodes/index.html.erb</p>
-エピソード一覧
-<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
-<%= @anime.title %>
-<table>
+
+<h1 class="form-title"><%= @anime.title %></h1>
+
 <% @episodes.each do |episode| %>
-<tr>
-<td>
-<%= attachment_image_tag(episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
-<%= link_to episode.subtitle, anime_episode_path(@anime, episode) %>
+<div class="row episode-box">
+<div class="col-xs-4">
+<%= attachment_image_tag(episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x150',  format: "jpg")%>
+</div>
+<div class="col-xs-8">
+<h4><%= link_to episode.subtitle, anime_episode_path(@anime, episode) %></h4>
 <%= episode.explanation %>
-</td>
-</tr>
+<div class="review-rating col-xs-4" data-score="<%= episode.reviews.average(:rate).to_f.round(1) %>"></div>
+
+</div>
+</div>
 <% end %>
-</table>
+
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+    path: '/assets/'
+  });
+</script>

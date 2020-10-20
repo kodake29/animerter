@@ -9,14 +9,11 @@ class Anime < ApplicationRecord
   validates :title, length: { in: 1..40 }
   validates :explanation, length: { maximum: 400 }
 
-  def self.sort(selection)
-    case selection
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
-    # when 'good'
-    #   return all.order(anime.episode.count: :DESC)
+  def self.search(search)
+    if search
+      @animes = Anime.where(['title LIKE ?', "%#{search}%"])
+    else
+      Anime.all
     end
   end
 

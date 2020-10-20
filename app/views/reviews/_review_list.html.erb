@@ -1,12 +1,26 @@
 <% reviews.each do |review|%>
-<div class="table">
-<%= attachment_image_tag(review.episode, :image, :fill,100,100, fallback: "no_image.jpg", size:'100x100',  format: "jpg")%>
-<div class="review-rating" data-score="<%= review.rate %>"></div>
-<h4><%= review.episode.anime.title %>
+<div class="comment-table">
+<div class="row">
+<h4 class="col-xs-7"><%= review.episode.anime.title %>
 <span>第<%= review.episode.episode_number %>話</span></h4>
-<div class="comment"><%= review.comment %></div>
-<div class="created">
-<span><%= time_ago_in_words(review.created_at) %></span></div>
-<div class="edit"><%= link_to "edit", edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning"%></div>
+
+<div class="edit col-xs-3">
+<%= review.private_status%>
+<% if user_signed_in? && current_user.id == review.user_id %><%= link_to "修正", edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning"%>
+<% end %>
+</div>
+
+</div>
+<div class="row">
+<div class="col-xs-4">
+<%= attachment_image_tag(review.episode, :image, :fill,100,100, fallback: "no_image.jpg", size:'100x100',  format: "jpg")%>
+</div>
+<div class="comment col-xs-7"><%= review.comment %></div>
+</div>
+<div class="row">
+<div class="review-rating col-xs-4" data-score="<%= review.rate %>"></div>
+<div class="col-xs-4"></div>
+<span><i class="fas fa-history"></i><%= time_ago_in_words(review.created_at) %> ago</span>
+</div>
 </div>
 <% end %>

@@ -10,8 +10,9 @@ class AnimesController < ApplicationController
   end
 
   def search
-    selection = params[:keyword]
-    @animes = Anime.sort(selection)
+    @animes = Anime.search(params[:search])
  end
+
+
 
 end

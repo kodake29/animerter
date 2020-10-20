@@ -16,6 +16,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+//  ヘッダー
  header{
   position:  relative;
   height: 130px;
@@ -26,11 +27,21 @@
   top:5px;
   left:5px;
  }
-
- body{
-    background-color: #D8D8D8;
+ .navbar-right{
+   font-size: large;
+ }
+ .navbar-right > li{
+   color:red;
+   background-color: crimson;
  }
 
+//  ボディ
+
+.form-title{
+  border-bottom: 2px solid #F96167;
+  font-family: impact;
+  font-size: 30px;
+}
  .about-title{
    margin: 10px 20px 30px;
    width:11%;
@@ -51,59 +62,54 @@
 }
 
  .anime-box {
-
     padding: 0.5em 1em;
     margin: 2em 0;
-    border: double 5px #4ec4d3;
+    border: 1px solid #F96167;
+    box-shadow: 3px 3px 3px 3px #faebd7;
+    border-radius: 10px;
  }
 
 
  .flex {
-   display: flex;
-   background-image: url(film.png);
    background-size: cover;
    display: flex; /* 追加 */
    flex-wrap: wrap;
    justify-content: center; /* 追加 */
-  align-items: center;
-  padding: 50px;
+
  }
  .flex > .anime-box {
-   width: 25%;
-   height: 300px;
-   margin: 5px;
-   background-color: red;
+   width: 28%;
+   height: 280px;
+   margin: 10px;
  }
- .image{
-    margin: 0 auto;
+ .anime-box > h3{
+   margin:5px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
  }
- .table{
+ .anime-box > .image{
+ }
+ .my_list-flex{
+  background-size: cover;
+  display: flex; /* 追加 */
+  flex-wrap: wrap;
+  justify-content: center; /* 追加 */
+ }
+ .my_list-flex > .anime-box{
+  width: 45%;
+  height: 270px;
+  margin: 10px;
+ }
+ .comment-table{
     position:  relative;
     background-color: #fff;
+    border: 1px solid #F96167;
+    box-shadow: 3px 3px 3px 3px #faebd7;
+    border-radius: 10px;
+    margin:10px;
+    padding:10px;
  }
-
- h4{
-   position:  absolute;
-   left:  130px;
-   top: 10px;
-   border-bottom:double 5px #4ec4d3;
- }
- .comment{
-   position:  absolute;
-   left:  130px;
-   top: 55px;
- }
- .created{
-   position:  absolute;
-   right:  50px;
-   bottom: 5px;
- }
- .edit{
-   position:  absolute;
-   right:  50px;
-   bottom: 50px;
- }
-
 .anime-title{
    position:  absolute;
    left:  220px;
@@ -116,4 +122,46 @@
   text-align: center;
   border:2px solid #990000;
   padding:12px; font-weight:850;
+}
+
+.btn{
+  width:100%;
+  margin-bottom:10px;
+}
+
+.btn-links{
+  margin-top:20px;
+  padding-top:50px;
+  border-top: solid 1px black;
+}
+.show-anime-box{
+  margin:10px 0 30px 0;
+}
+
+.episode-box{
+  margin:10px 0 30px 0;
+  padding-bottom:10px;
+  border-bottom: 1px solid #C0C0C0;
+
+}
+
+// 管理者
+.admin-top{
+
+}
+.top-box{
+  width:32%;
+  height: 300px;
+  border:solid 2px black;
+  margin:0.3%;
+}
+.top-box > i{
+  padding-left:30% ;
+  padding-top:10%;
+}
+.top-box > h2{
+  padding-left:30%;
+}
+.top-box > h3{
+  padding-left: 38%;
 }

@@ -12,103 +12,66 @@
   <body>
     <header class="navbar navbar-fixed-top" style="background-color: #C0C0C0;">
         <div class="conteiner">
-            <div class="row" style="margin-right: 560px">
-
+            <div class="row" style="margin-right: 60px">
+                <nav class="nav navber-nav navbar-left">
+                    <div class="logo">
+                        <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
+                    </div>
+                </nav>
                 <nav>
-                    <ul class="nav navbar-nav navbar-right">
-                        <% if admin_signed_in? %>
-                        <nav class="nav navber-nav navbar-left">
-
-
-                            <div class="logo">
-                               <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
-                            </div>
-
-                        </nav>
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if admin_signed_in? %>
                         <li>
-<%= link_to admins_animes_path do %>
-                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
-<% end %>
+                          <%= link_to admins_animes_path  do%>
+                          <i class="fas fa-film">アニメ一覧</i>
+                          <% end %>
                         </li>
                         <li>
-<%= link_to admins_users_path do %>
-                            <button type="button" class="btn btn-secondary">ユーザ一覧</button>
-<% end %>
+                          <%= link_to admins_users_path do%>
+                          <i class="fas fa-users">ユーザ一覧</i>
+                          <% end %>
                         </li>
                         <li>
-<%= link_to admins_reviews_path do %>
-                            <button type="button" class="btn btn-secondary">レビュー一覧</button>
-<% end %>
+                          <%= link_to admins_reviews_path do %>
+                          <i class="far fa-comments">レビュー一覧</i>
+                          <% end %>
                         </li>
                         <li>
-<%= link_to(destroy_admin_session_path, method: :delete) do %>
-                            <button type="button" class="btn btn-secondary">ログアウト</button>
-<% end %>
+                          <%= link_to destroy_admin_session_path, method: :delete do%>
+                          <i class="fas fa-sign-out-alt">ログアウト</i>
+                          <% end %>
                         </li>
-                        <% elsif user_signed_in? %>
-                        <nav class="nav navber-nav navbar-left">
-
-                            <div class="logo">
-                                <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
-                            </div>
-
-
-                         </nav>
+                    <% elsif user_signed_in? %>
                         <li>
-                            <p class="welcome">ようこそ、
-                                <%= current_user.name%>さん!</p>
+                          <p class="welcome">ようこそ、<%= current_user.name%>さん!</p>
                         </li>
                         <li>
-                        <%= link_to(about_path) do %>
-                            <button type="button" class="btn btn-secondary">About</button>
-<% end %></li>
-                        <li>
-<%= link_to user_path(current_user) do%>
-                            <button type="button" class="btn btn-secondary">マイページ</button>
-<% end %>
+                          <%= link_to "About",about_path %>
                         </li>
                         <li>
-<%= link_to animes_path do %>
-                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
-<% end %>
+                          <%= link_to"マイページ" ,user_path(current_user) %>
                         </li>
                         <li>
-
-<%= link_to(destroy_admin_session_path, method: :delete) do %>
-                            <button type="button" class="btn btn-secondary">ログアウト</button>
-<% end %>
-
-                        </li>
-<% else %>
-                        <nav class="nav navber-nav navbar-left">
-                            <p class="logo">
-    <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
-                            </p>
-                         </nav>
-                        <li>
-
-<%= link_to(about_path) do %>
-                            <button type="button" class="btn btn-secondary">About</button>
-<% end %>
+                          <%= link_to"アニメ一覧", animes_path %>
                         </li>
                         <li>
-<%= link_to animes_path do %>
-                            <button type="button" class="btn btn-secondary">アニメ一覧</button>
-<% end %>
+                          <%= link_to"ログアウト",destroy_admin_session_path, method: :delete %>
+                        </li>
+                    <% else %>
+                        <li>
+                          <%= link_to"About",about_path %>
                         </li>
                         <li>
-<%= link_to new_user_registration_path do %>
-                            <button type="button" class="btn btn-secondary">新規登録</button>
-<% end %>
+                          <%= link_to"アニメ一覧", animes_path %>
                         </li>
                         <li>
-<%= link_to new_user_session_path do %>
-                            <button type="button" class="btn btn-secondary">ログイン</button>
-<% end %>
-
+                          <%= link_to"新規登録", new_user_registration_path %>
                         </li>
-<% end %>
-                    </ul>
+                        <li>
+                          <%= link_to"ログイン", new_user_session_path %>
+                        </li>
+                    <% end %>
+                  </ul>
                 </nav>
             </div>
         </div>

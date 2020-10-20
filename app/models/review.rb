@@ -4,5 +4,5 @@ class Review < ApplicationRecord
   enum private_status: {公開:0, プライベート:1}
   enum release_status: {許可:0, 非公開:1}
 
-
+  validates :rate, presence: true
 end

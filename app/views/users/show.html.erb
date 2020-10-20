@@ -1,17 +1,27 @@
 <h2><%= @user.name%>さんのページ</h2>
 <%= @user.withdrawal_status %>
-
+<% if user_signed_in? && current_user.id == @user.id %>
              <%= link_to(edit_user_path) do %>
-            <button type="button" class="btn btn-primary">編集する</button>
+            <button type="button" class="btn btn-primary">会員情報変更</button>
             <% end %>
+            <% end %>
+            <div class="row">
+            <h4>評価した作品</h4>
 
-レビュー一覧
-<%= render 'reviews/review_list', reviews: @reviews %>
+            </div>
+            <div class="row">
+            <div class="col-xs-6">
+            <h4 class="form-title">お気に入り</h4>
+            <%= render 'my_lists/my_list_list', my_lists: @my_lists%></div>
+<div class="col-xs-6"><h4 class="form-title">レビュー一覧</h4>
+<%= render 'reviews/review_list', reviews: @reviews %></div>
 
-<h4>高く評価した作品</h4>
 
-<h4>お気に入り</h4>
-<%= render 'my_lists/my_list_list', my_lists: @my_lists%>
+
+
+
+
+</div>
 <script>
   $('.review-rating').raty({
     readOnly: true,

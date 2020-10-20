@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
     def new
       @review = Review.new
+      @episode = Episode.find(params[:id])
     end
 
     def create

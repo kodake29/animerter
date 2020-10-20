@@ -1,23 +1,18 @@
-  <% animes.each do |anime|%>
-    <div class="table">
-     <div class="row">
-        <div class ="col-xs-4 title_image">
-          <%= attachment_image_tag(anime, :image, :fill,200,200, fallback: "no_image.jpg", size:'200x200',  format: "jpg")%>
+   <div class="flex">
+      <% animes.each do |anime|%>
+        <div class="anime-box">
+          <h3><%= link_to anime.title, anime_path(anime)%></h3>
+            <div class="image">
+              <%= attachment_image_tag(anime, :image, :fill,150,150, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
+            </div>
           <% @sum = 0 %>
-            <% anime.episodes.each do |episode| %>
-<% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
-<% (@sum+=episode_rate) %>
-<% end %>
-<% if anime.episodes.count != 0 %>
-<div class="review-rating" data-score="<%= @sum/anime.episodes.count %>"></div>
-<% end %>
+          <% anime.episodes.each do |episode| %>
+            <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+            <% (@sum+=episode_rate) %>
+          <% end %>
+          <% if anime.episodes.count != 0 %>
+            <div class="review-rating" data-score="<%= @sum/anime.episodes.count %>"></div>
+          <% end %>
         </div>
-          <div class="anime-title">
-            <h3><%= link_to anime.title, anime_path(anime)%></h3>
-            <div class="explanation"><%= anime.explanation %></div>
-
-          </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
-<%= paginate animes %>

@@ -1,9 +1,11 @@
-<h2>全ての作品</h2>
+<h2 class="form-title">全ての作品</h2>
 <%# 並び換え機能 %>
-<%= form_with model: @anime, url: search_path, method: :get, local: true do |f| %>
-  <%= f.select :keyword, [ ['投稿が新しい順', 'new'], ['投稿が古い順', 'old'], ['評価順', 'good'] ] %>
-  <%= f.submit %>
-  <% end %>
+<p>検索</p>
+<%= form_tag(search_path,:method => 'get') do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag 'Search', :name => nil %>
+<% end %>
+
 
 <%= render 'anime_list', animes: @animes %>
 <script>

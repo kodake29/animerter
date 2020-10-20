@@ -1,10 +1,7 @@
-<h1>Episodes#show</h1>
-<p>Find me in app/views/episodes/show.html.erb</p>
-エピソード詳細
-<%= @episode.subtitle %>
+<h1 class="form-title"><%= @episode.anime.title %></h1>
+<h2><%= @episode.subtitle %><div class="review-rating" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div></h2>
 <%= @episode.explanation %>
-<div class="review-rating" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div>
-
+<div class="row">
 <%= link_to "レビューする", new_anime_episode_review_path(@episode.anime, @episode)%>
 
 
@@ -20,7 +17,8 @@
 </td>
 </tr>
 <% end %>
-</table>
+</table></div>
+
 <script>
   $('.review-rating').raty({
     readOnly: true,
