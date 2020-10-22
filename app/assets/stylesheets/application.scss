@@ -202,7 +202,7 @@
 
 
 #box{
-  height: 550px;
+  height: 500px;
   position: relative;
 }
 #box > p{
@@ -213,23 +213,18 @@
   color: #FFFFCC;
   margin-bottom: 50px;
   font-family: impact;
-
 }
 .image1 {
-  background-image: url(image1.jpg);
-  background-size: cover;
+  background-image: image-url(image1.jpg);
 }
 .image2 {
-  background-image: url(image2.jpg);
-  background-size: cover;
+  background-image: image-url(image2.jpg);
 }
 .image3 {
-  background-image: url(image3.jpg);
-  background-size: contain;
+  background-image: image-url(image3.jpg);
 }
 .image4 {
-  background-image: url(image4.jpg);
-  background-size: cover;
+  background-image: image-url(image4.jpg);
 }
 
 /* ---------------------------- */
