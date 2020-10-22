@@ -4,9 +4,9 @@
     <title>Animerter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" >
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
   </head>
 
   <body>
@@ -18,67 +18,76 @@
                         <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
                     </div>
                 </nav>
-                <nav>
-                  <ul class="nav navbar-nav navbar-right">
+
+<div id="sp-menu">
+ <ul class="nav navbar-nav navbar-right">
                     <% if admin_signed_in? %>
                         <li>
-                          <%= link_to admins_animes_path  do%>
-                          <i class="fas fa-film">アニメ一覧</i>
-                          <% end %>
+                          <%= link_to "アニメ一覧",admins_animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to admins_users_path do%>
-                          <i class="fas fa-users">ユーザ一覧</i>
-                          <% end %>
+                          <%= link_to "ユーザ一覧", admins_users_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to admins_reviews_path do %>
-                          <i class="far fa-comments">レビュー一覧</i>
-                          <% end %>
+                          <%= link_to "レビュー一覧",admins_reviews_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to destroy_admin_session_path, method: :delete do%>
-                          <i class="fas fa-sign-out-alt">ログアウト</i>
-                          <% end %>
+                          <%= link_to"ログアウト", destroy_admin_session_path, method: :delete, class: "header-text" %>
                         </li>
                     <% elsif user_signed_in? %>
                         <li>
                           <p class="welcome">ようこそ、<%= current_user.name%>さん!</p>
                         </li>
                         <li>
-                          <%= link_to "About",about_path %>
+                          <%= link_to "About",about_path, class: "header-text"%>
                         </li>
                         <li>
-                          <%= link_to"マイページ" ,user_path(current_user) %>
+                          <%= link_to"マイページ" ,user_path(current_user), class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"アニメ一覧", animes_path %>
+                          <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"ログアウト",destroy_admin_session_path, method: :delete %>
+                          <%= link_to"ログアウト",destroy_admin_session_path, method: :delete, class: "header-text" %>
                         </li>
                     <% else %>
                         <li>
-                          <%= link_to"About",about_path %>
+                          <%= link_to"About",about_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"アニメ一覧", animes_path %>
+                          <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"新規登録", new_user_registration_path %>
+                          <%= link_to"新規登録", new_user_registration_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"ログイン", new_user_session_path %>
+                          <%= link_to"ログイン", new_user_session_path, class: "header-text" %>
                         </li>
                     <% end %>
                   </ul>
-                </nav>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+
+
             </div>
         </div>
     </header>
 <div class="margin" style="margin-top: 150px"></div>
 
-<div class="container"><%= yield %></div>
+<div class="container"><%= yield %>
+    <span id="back">
+      <a href="#">
+      <%= image_tag 'arrow.png' %>
+      </a>
+    </span></div>
 
   </body>
 </html>

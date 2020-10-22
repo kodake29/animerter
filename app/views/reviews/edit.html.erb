@@ -1,11 +1,14 @@
-<h1>Reviews#edit</h1>
-<p>Find me in app/views/reviews/edit.html.erb</p>
+<div class="col-xs-4"></div>
+<div class="col-xs-5">
+<%= render 'layouts/error_messages', model: @review %>
 <%= form_for [@anime, @episode, @review], url: anime_episode_review_path do |f| %>
   <div class="form-group row" id="star">
     <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
     <%= f.hidden_field :rate, id: :review_star %>
   </div>
-<%= f.text_area :comment %>
+    <h5>感想</h5>
+<%= f.text_area :comment, rows:10, cols:40 %>
+<h5>公開ステータス</h5>
 <%= f.radio_button :private_status, :公開%>
 <%= f.label :公開 %>
 <%= f.radio_button :private_status, :プライベート%>
@@ -16,6 +19,7 @@
 						<% end %>
 
 <% end %>
+</div>
 
   <script>
   $('#star').raty({

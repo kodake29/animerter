@@ -1,12 +1,18 @@
+<div class="row show-anime-box">
+<h1><%= @anime.title%></h1>
+<div class=".col-md-4 col-xs-12">
 <%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
-<%= @anime.title %>
+</div>
+<div class="col-md-4 col-xs-12">
 <%= @anime.explanation %>
-<%= link_to "編集する", edit_admins_anime_path(@anime)%>
+</div>
 
+<%= link_to "編集する", edit_admins_anime_path(@anime)%>
+</div>
 
 
 <div class="row">
-<div class="col-xs-5">
+<div class="col-md-5 col-xs-12">
 <h3>新規エピソード追加</h3>
 <%= render 'layouts/error_messages', model: @episode %>
 <%= form_for [:admins, @anime, @episode] do |f| %>
@@ -24,7 +30,7 @@
 <% end %>
 </div>
 
-<div class="col-xs-5">
+<div class="col-md-5 col-xs-12">
 <h3>エピソード一覧(全<%= @anime.episodes.count %>話)</h3>
 
 <table class="table table-striped">

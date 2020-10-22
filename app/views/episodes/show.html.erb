@@ -1,8 +1,50 @@
 <h1 class="form-title"><%= @episode.anime.title %></h1>
+<%= link_to "戻る", anime_path(@anime) %>
+
 <h2><%= @episode.subtitle %><div class="review-rating" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div></h2>
 <%= @episode.explanation %>
 <div class="row">
-<%= link_to "レビューする", new_anime_episode_review_path(@episode.anime, @episode)%>
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+レビューを投稿する
+</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= render 'layouts/error_messages', model: @review %>
+<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path(@anime,@episode), remote: true do |f| %>
+      <div class="modal-body">
+      <div class="form-group"><div class="form-group row" id="star">
+    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+  <%= f.label :comment,"感想" %>
+<%= f.text_area :comment, rows:10, cols:40 %>
+<%= f.label :private_status,"公開ステータス"%>
+<%= f.radio_button :private_status, :公開%>
+<%= f.label :公開 %>
+<%= f.radio_button :private_status, :プライベート%>
+<%= f.label :プライベート %></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <%= f.submit "投稿する", class:"btn btn-primary"%>
+      </div>
+<% end %>
+    </div>
+  </div>
+</div>
+
+
+
 
 
 レビュー一覧
@@ -29,3 +71,14 @@
   });
 </script>
 
+
+  <script>
+  $('#star').raty({
+    size     : 60,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>',
+    scoreName: 'review[rate]',
+    half: true,
+  });
+  </script>

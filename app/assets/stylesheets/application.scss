@@ -27,15 +27,22 @@
   top:5px;
   left:5px;
  }
+ @media screen and (min-width: 768px) {
  .navbar-right{
+   display: block !important;
    font-size: large;
+   position:  relative;
+   margin-top:40px;
  }
- .navbar-right > li{
-   color:red;
-   background-color: crimson;
+ }
+
+ .header-text{
+   color:black;
+   font-size: large;
  }
 
 //  ボディ
+
 
 .form-title{
   border-bottom: 2px solid #F96167;
@@ -68,6 +75,14 @@
     box-shadow: 3px 3px 3px 3px #faebd7;
     border-radius: 10px;
  }
+ .anime-box:hover{
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  border: 2px solid #f03c43;
+  box-shadow: 3px 3px 3px 3px #faebd7;
+  border-radius: 10px;
+  text-decoration: none;
+ }
 
 
  .flex {
@@ -87,6 +102,14 @@
    white-space: nowrap;
    overflow: hidden;
    text-overflow: ellipsis;
+ }
+ .anime-title{
+  color: black;
+  text-decoration: none;
+ }
+ .anime-title:hover{
+   color:black;
+   text-decoration: none;
  }
  .anime-box > .image{
  }
@@ -110,17 +133,28 @@
     margin:10px;
     padding:10px;
  }
-.anime-title{
-   position:  absolute;
-   left:  220px;
-   top: 10px;
+ #back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
 }
+#back img {
+  width: 50px;
+}
+
 // バリデーションメッセージ
 .alert {
   color:#262626;
   background:#FFEBE8;
   text-align: center;
   border:2px solid #990000;
+  padding:12px; font-weight:850;
+}
+.notice{
+  color:#262626;
+  background:#FFEBE8;
+  text-align: center;
+  border:2px solid #000080;
   padding:12px; font-weight:850;
 }
 
@@ -164,4 +198,112 @@
 }
 .top-box > h3{
   padding-left: 38%;
+}
+
+
+#box{
+  height: 550px;
+  position: relative;
+}
+#box > p{
+  position: absolute;
+  bottom:20px;
+  left:100px;
+  font-size: 70px;
+  color: #FFFFCC;
+  margin-bottom: 50px;
+  font-family: impact;
+
+}
+.image1 {
+  background-image: url(image1.jpg);
+  background-size: cover;
+}
+.image2 {
+  background-image: url(image2.jpg);
+  background-size: cover;
+}
+.image3 {
+  background-image: url(image3.jpg);
+  background-size: contain;
+}
+.image4 {
+  background-image: url(image4.jpg);
+  background-size: cover;
+}
+
+/* ---------------------------- */
+/* --- ハンバーガーアイコン --- */
+/* ---------------------------- */
+@media screen and (max-width:768px) {
+#hm-icon{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 10;
+}
+.menu-trigger,
+.menu-trigger span {
+  display: inline-block;
+  transition: all .4s;
+  box-sizing: border-box;
+}
+.menu-trigger {
+  position: relative;
+  width: 50px;
+  height: 44px;
+}
+.menu-trigger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #000;
+  border-radius: 4px;
+}
+.menu-trigger span:nth-of-type(1) {
+  top: 0;
+}
+.menu-trigger span:nth-of-type(2) {
+  top: 20px;
+}
+.menu-trigger span:nth-of-type(3) {
+  bottom: 0;
+}
+.menu-trigger.active span:nth-of-type(1) {
+  -webkit-transform: translateY(20px) rotate(-45deg);
+  transform: translateY(20px) rotate(-45deg);
+  background-color: #fff;
+}
+.menu-trigger.active span:nth-of-type(2) {
+  opacity: 0;
+}
+.menu-trigger.active span:nth-of-type(3) {
+  -webkit-transform: translateY(-20px) rotate(45deg);
+  transform: translateY(-20px) rotate(45deg);
+  background-color: #fff;
+}
+/* ------------------------ */
+/* ------ spメニュー ------ */
+/* ------------------------ */
+#sp-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  min-height: 100%;
+  display: none;
+  z-index: 9;
+}
+#sp-menu li{
+  text-align: center;
+  margin-bottom: 30px;
+}
+#sp-menu a{
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
 }

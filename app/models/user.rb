@@ -11,7 +11,7 @@ class User < ApplicationRecord
          has_many :animes, through: :my_lists
 
   def active_for_authentication?
-    super && (self.withdrawal_status == "有効会員")
+    super && (self.withdrawal_status == "有効会員" )
   end
 
 end

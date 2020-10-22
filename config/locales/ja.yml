@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    attributes:
+      anime:
+        title: タイトル
+        explanation: あらすじ
+      episode:
+        episode_number: エピソード番号
+        subtitle: サブタイトル
+        explanation: 説明文
+      review:
+        comment: 感想
+        rate: 評価
+      user:
+        name: 名前
+        email: メールアドレス
+        encrypted_password: パスワード
+        reset_password_token: パスワード
+        password: パスワード

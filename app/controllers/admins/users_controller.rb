@@ -3,10 +3,6 @@ class Admins::UsersController < ApplicationController
     @users = User.page(params[:page]).reverse_order
   end
 
-  def show
-    @user = User.find(params[:id])
-  end
-
   def edit
     @user = User.find(params[:id])
   end
@@ -14,7 +10,7 @@ class Admins::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to admins_user_path(@user)
+    redirect_to admins_users_path
   end
 
   private

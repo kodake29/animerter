@@ -1,9 +1,11 @@
    <div class="my_list-flex">
       <% my_lists.each do |my_list|%>
         <div class="anime-box">
-          <h3><%= link_to my_list.anime.title, anime_path(my_list.anime)%></h3>
+          <h3><%= link_to my_list.anime.title, anime_path(my_list.anime), class: "anime-title"%></h3>
             <div class="image">
+            <%= link_to anime_path(my_list.anime) do %>
               <%= attachment_image_tag(my_list.anime, :image, :fill,150,150, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
+              <% end %>
             </div>
           <% @sum = 0 %>
           <% my_list.anime.episodes.each do |episode| %>
