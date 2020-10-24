@@ -1,5 +1,8 @@
+<div class="row">
 <h1 class="form-title"><%= @episode.anime.title %></h1>
-<%= link_to "戻る", anime_path(@anime) %>
+<%= link_to ">>back", anime_episodes_path(@anime) , class:"back"%>
+</div>
+
 
 <h2><%= @episode.subtitle %><div class="review-rating" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div></h2>
 <%= @episode.explanation %>
@@ -14,7 +17,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h4 class="modal-title" id="exampleModalLabel">レビュー投稿</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -48,18 +51,7 @@
 
 
 レビュー一覧
-<table>
-<% @reviews.each do |review|%>
-<tr>
-<td>
-<%= review.comment %>
-<%= link_to review.user.name, user_path(review.user)%>
-<div class="review-rating" data-score="<%= review.rate %>"></div>
-<%= review.release_status %>
-</td>
-</tr>
-<% end %>
-</table></div>
+<div class="reviews"><%= render 'reviews/episode_reviews', reviews: @reviews%></div>
 
 <script>
   $('.review-rating').raty({

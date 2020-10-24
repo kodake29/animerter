@@ -1,46 +1,53 @@
+<div class="container">
 <div class="row show-anime-box">
-<h1><%= @anime.title%></h1>
-<div class="col-xs-4">
-<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
-</div>
-<div class="col-xs-8">
-<%= @anime.explanation %>
-<% @sum = 0 %>
-<% @anime.episodes.each do |episode| %>
-<% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
-<% (@sum+=episode_rate) %>
-<% end %>
-<% if @anime.episodes.count != 0 %>
-  <div class="review-rating" data-score="<%= @sum/@anime.episodes.count %>"></div>
-<% else %>
-  <p>評価なし</p>
-<% end  %></div>
+  <h1><%= @anime.title%></h1>
+    <div class="col-md-4 col-xs-12">
+      <%= attachment_image_tag(@anime, :image, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
+    </div>
+    <div class="col-md-8 col-xs-12">
+    <%= @anime.explanation %>
+    <% @sum = 0 %>
+    <% @anime.episodes.each do |episode| %>
+      <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+      <% (@sum+=episode_rate) %>
+    <% end %>
+    <% if @anime.episodes.count != 0 %>
+      <div class="review-rating" data-score="<%= @sum/@anime.episodes.count %>"></div>
+    <% else %>
+      <p>評価なし</p>
+    <% end  %>
+    </div>
 </div>
 
 
 
 <div class="row">
-<div class="col-xs-3">
-<%= link_to anime_episodes_path(@anime) do %>
-<i class="fas fa-book-open fa-3x"></i>
-<h3>エピソードを選択</h3>
-<% end %></div>
-<div class="col-xs-3">
+<div class="col-xs-1"></div>
+  <%= link_to anime_episodes_path(@anime),class:"show-box" do %>
+    <div class="col-md-3 col-xs-8 box2">
+     <i class="fas fa-book-open fa-4x"></i>
+     <h3>エピソードを選択</h3>
+    </div>
+  <% end %>
+<div class="col-md-2"></div>
+  <% if !MyList.exists?(user_id:current_user.id, anime_id: @anime.id) %>
+    <%= link_to anime_my_lists_path(@anime),method: :post,class:"show-box" do%>
+      <div class="col-md-3 col-xs-8 box2">
+        <i class="fas fa-plus fa-4x"></i>
+        <h3>お気に入り追加</h3>
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to anime_my_list_path(@anime),method: :delete,class:"show-box" do %>
+      <div class="col-md-3 col-xs-8 box2">
+        <i class="fas fa-check fa-4x"></i>
+        <h3>お気に入り済み</h3>
+      </div>
+    <% end %>
+    <% end %>
+</div>
+</div>
 
- <% if !MyList.exists?(user_id:current_user.id, anime_id: @anime.id) %>
-    <%= link_to anime_my_lists_path(@anime),method: :post do%>
-    <i class="fas fa-plus fa-3x"></i>
-    <h3>お気に入り追加</h3>
-    <% end %>
-    <% else %>
-    <%= link_to anime_my_list_path(@anime),method: :delete do %>
-    <i class="fas fa-check fa-3x"></i>
-    <h3>お気に入り解除</h3>
-    <% end %>
-    <% end %>
-</div>
-<div>視聴可能サービス</div>
-</div>
 <script>
   $('.review-rating').raty({
     readOnly: true,

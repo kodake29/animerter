@@ -1,18 +1,20 @@
 
 <h1 class="form-title"><%= @anime.title %></h1>
+<%= link_to ">>back", anime_path(@anime) , class:"back"%>
 
 <% @episodes.each do |episode| %>
+<%= link_to anime_episode_path(@anime, episode) do%>
 <div class="row episode-box">
 <div class="col-xs-4">
-<%= attachment_image_tag(episode, :image, :fill,150,150, fallback: "no_image.jpg", size:'200x150',  format: "jpg")%>
+<%= attachment_image_tag(episode, :image, fallback: "no_image.jpg", size:'200x150',  format: "jpg")%>
 </div>
 <div class="col-xs-8">
 <h4><%= link_to episode.subtitle, anime_episode_path(@anime, episode) %></h4>
 <%= episode.explanation %>
 <div class="review-rating col-xs-4" data-score="<%= episode.reviews.average(:rate).to_f.round(1) %>"></div>
-
 </div>
 </div>
+<% end %>
 <% end %>
 
 <script>

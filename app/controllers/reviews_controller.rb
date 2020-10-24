@@ -12,11 +12,8 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @review.episode_id = @episode.id
       @review.user_id = current_user.id
-      if @review.save
-         redirect_to anime_episode_path(@anime, @episode)
-      else
-        render  'episodes/show'
-      end
+      @review.save
+
     end
 
     def index

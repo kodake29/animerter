@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user.id == current_user.id
-       @reviews = @user.reviews.page(params[:page]).reverse_order.where(release_status: 0)
+       @reviews = @user.reviews.page(params[:page]).reverse_order.where(release_status: 0).per(5)
     else
-      @reviews = @user.reviews.page(params[:page]).reverse_order.where(release_status: 0, private_status: 0)
+      @reviews = @user.reviews.page(params[:page]).reverse_order.where(release_status: 0, private_status: 0).per(5)
     end
-    @my_lists = MyList.where(user_id: @user.id)
+    @my_lists = MyList.page(params[:my_list_page]).reverse_order.where(user_id: @user.id).per(2)
   end
 
 

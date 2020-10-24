@@ -1,0 +1,12 @@
+<table>
+<% reviews.each do |review|%>
+<tr>
+<td>
+<%= review.comment %>
+<%= link_to review.user.name, user_path(review.user)%>
+<div class="review-rating" data-score="<%= review.rate %>"></div>
+<%= review.release_status %>
+</td>
+</tr>
+<% end %>
+</table></div>

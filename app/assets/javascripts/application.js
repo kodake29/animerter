@@ -62,10 +62,24 @@ $(document).ready(function () {
   });
 });
 
-$(function() {
+$(function () {
+  fadeautFlg = false;
   $('.menu-trigger').on('click', function(event) {
     $(this).toggleClass('active');
-    $('#sp-menu').fadeToggle();
+    if (fadeautFlg == false) {
+      // フェードイン処理
+      $('#sp-menu').fadeToggle();
+      fadeautFlg = true;
+    } else {
+      // フェードアウト処理
+      $('#sp-menu').fadeToggle(400, function () {
+        // フェードアウト処理終了後に実行する
+        // fadeToggleで発生した残骸を取り除く
+        $(this).removeAttr('style');
+      });
+      fadeautFlg = false;
+
+    }
     event.preventDefault();
   });
 });
