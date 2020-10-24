@@ -47,6 +47,7 @@ header {
   border-bottom: 2px solid #f96167;
   font-family: impact;
   font-size: 30px;
+  margin:30px 0;
 }
 .about-title {
   margin: 10px 20px 30px;
@@ -90,7 +91,7 @@ header {
   justify-content: center; /* 追加 */
 }
 .flex > .anime-box {
-  width: 28%;
+  width: 280px;
   height: 280px;
   margin: 10px;
 }
@@ -117,7 +118,7 @@ header {
   justify-content: center; /* 追加 */
 }
 .my_list-flex > .anime-box {
-  width: 45%;
+  width: 250px;
   height: 270px;
   margin: 10px;
 }
@@ -173,7 +174,8 @@ header {
   border: 1px solid #f96167;
 }
 .box2{
-  margin-left: 50px;
+  display: inline-block;
+  margin: 0 auto;
   margin: 2em 0;
   border: 1px solid #f96167;
   box-shadow: 3px 3px 3px 3px #faebd7;
@@ -184,7 +186,7 @@ header {
 
 }
 .fa-book-open, .fa-plus, .fa-check{
-  padding-left:33%;
+  margin: 0 auto;
 }
 .show-box > h3{
   padding-left:15%;
@@ -335,4 +337,13 @@ header {
 .back{
   font-size: 20px;
   color:black;
+}
+.table-head{
+  background-color: darksalmon;
+  font-size:20px;
+}
+.table-body{
+  font-size:15px;
+  border-bottom: solid 1px black;
+  margin:15px 0 ;
 }

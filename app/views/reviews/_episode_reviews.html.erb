@@ -1,12 +1,17 @@
-<table>
-<% reviews.each do |review|%>
-<tr>
-<td>
-<%= review.comment %>
-<%= link_to review.user.name, user_path(review.user)%>
-<div class="review-rating" data-score="<%= review.rate %>"></div>
-<%= review.release_status %>
-</td>
-</tr>
+<div class="table table-striped">
+<div class="row table-head">
+<div class="col-xs-3">ユーザ名</div>
+<div class="col-xs-6">コメント</div>
+<div class="col-xs-3">日時</div>
+</div>
+
+<% reviews.each do |review| %>
+<div class="row table-body">
+<div class="col-xs-3"><%= link_to review.user.name, user_path(review.user) %></div>
+<div class="col-xs-6"><%=review.comment %></div>
+<div class="col-xs-3"><%= review.created_at.to_s(:datetime_jp)%></div>
+</div>
+
 <% end %>
-</table></div>
+</div>
+<%= paginate reviews%>
