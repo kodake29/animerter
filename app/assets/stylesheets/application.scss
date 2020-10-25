@@ -27,7 +27,7 @@ header {
   top: 5px;
   left: 5px;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 850px) {
   .navbar-right {
     display: block !important;
     font-size: large;
@@ -42,6 +42,14 @@ header {
 }
 
 //  ボディ
+body{
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+}
 
 .form-title {
   border-bottom: 2px solid #f96167;
@@ -69,11 +77,12 @@ header {
 }
 
 .anime-box {
-  padding: 0.5em 1em;
+  padding: 10px;
   margin: 2em 0;
   border: 1px solid #f96167;
   box-shadow: 3px 3px 3px 3px #faebd7;
   border-radius: 10px;
+  position: relative;
 }
 .anime-box:hover {
   padding: 0.5em 1em;
@@ -130,6 +139,14 @@ header {
   border-radius: 10px;
   margin: 10px;
   padding: 10px;
+  font-size:16px;
+}
+.comment{
+  margin-top:15px;
+  font-size:16px;
+}
+.edit-form{
+  font-size:16px;
 }
 #back {
   position: fixed;
@@ -247,7 +264,7 @@ header {
 /* ---------------------------- */
 /* --- ハンバーガーアイコン --- */
 /* ---------------------------- */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 850px) {
   #hm-icon {
     position: fixed;
     right: 20px;
@@ -346,4 +363,24 @@ header {
   font-size:15px;
   border-bottom: solid 1px black;
   margin:15px 0 ;
+}
+
+.img-rounded{
+  margin-bottom:10px;
+}
+
+.rate > .count {
+  position: absolute;
+  bottom:0;
+  left:120px;
+
+}
+.rate > .review-rating{
+  position: absolute;
+  bottom:10px;
+  left:20px;
+}
+
+.episode-btn{
+  width:200px;
 }

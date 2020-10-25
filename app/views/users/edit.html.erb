@@ -1,7 +1,13 @@
-<%= form_for @user, url: user_path(@user) do |f| %>
-<%= f.text_field :name %>
-<%= f.submit "修正する"%>
-<% end %>
-<%= link_to(users_confirmation_path) do %>
-                <button class="btn btn-danger">退会する</button>
-              <% end %>
+<div class="col-xs-4"></div>
+<div class="col-xs-4">
+  <div class="row">
+    <%= form_for @user, url: user_path(@user) do |f| %>
+    <%= f.text_area :name ,rows:1%></div>
+    <%= f.submit "修正する"%>
+    <% end %>
+    <%= link_to(users_confirmation_path) do %>
+    <button class="btn btn-danger">退会する</button>
+    <% end %>
+</div>
+</div>
+

@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def login_check
     unless user_signed_in?
-      flash[:alert] = "ログインしてください"
+      flash[:alert] = "サービスをご利用いただくにはログインが必要です。"
       redirect_to root_path
     end
   end

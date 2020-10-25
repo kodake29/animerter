@@ -1,13 +1,15 @@
 <div class="col-xs-4"></div>
 <div class="col-xs-4">
-<%= form_for @user, url: admins_user_path(@user) do |f| %>
-<h5>ニックネーム</h5>
-<%= f.text_field :name %>
-<h5>ステータス</h5>
-<%= f.radio_button :withdrawal_status, :有効会員 %>
-<%= f.label :有効会員 %>
-<%= f.radio_button :withdrawal_status, :退会 %>
-<%= f.label :退会 %>
-<div><%= f.submit "修正する"%></div>
-<% end %>
+    <%= form_for @user, url: admins_user_path(@user) do |f| %>
+    <h5>ニックネーム</h5>
+    <%= f.text_field :name %>
+    <h5>ステータス</h5>
+    <%= f.radio_button :withdrawal_status, :有効会員 %>
+    <%= f.label :有効会員 %>
+    <%= f.radio_button :withdrawal_status, :退会 %>
+    <%= f.label :退会 %>
+    <div>
+        <%= f.submit "修正する"%>
+    </div>
+    <% end %>
 </div>

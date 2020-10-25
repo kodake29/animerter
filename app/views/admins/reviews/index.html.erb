@@ -1,22 +1,33 @@
-
 <table class="table table-striped">
-<tr>
-<th>ユーザ名</th>
-<th>作品名</th>
-<th>エピソードNo.</th>
-<th>コメント</th>
-<th>公開</th>
-<th>作成日時</th>
-</tr>
-<% @reviews.each do |review| %>
-<tr>
-<td class="col-xs-1"><%= link_to review.user.name, admins_user_path(review.user) %></td>
-<td class="col-xs-2"><%= link_to review.episode.anime.title, admins_anime_path(review.episode.anime) %></td>
-<td class="col-xs-1"><%=link_to review.episode.episode_number, admins_anime_episode_path(review.episode.anime, review.episode) %></td>
-<td class="col-xs-5"><%=link_to review.comment, edit_admins_review_path(review) %></td>
-<td class="col-xs-1"><%=review.release_status %></td>
-<td class="col-xs-2"><%= review.created_at.to_s(:datetime_jp)%></td>
-</tr>
-<% end %>
+    <tr>
+        <th>ユーザ名</th>
+        <th>作品名</th>
+        <th>エピソードNo.</th>
+        <th>コメント</th>
+        <th>公開</th>
+        <th>作成日時</th>
+    </tr>
+    <% @reviews.each do |review| %>
+    <tr>
+        <td class="col-xs-1">
+            <%= link_to review.user.name, admins_user_path(review.user) %>
+        </td>
+        <td class="col-xs-2">
+            <%= link_to review.episode.anime.title, admins_anime_path(review.episode.anime) %>
+        </td>
+        <td class="col-xs-1">
+            <%=link_to review.episode.episode_number, admins_anime_episode_path(review.episode.anime, review.episode) %>
+        </td>
+        <td class="col-xs-5">
+            <%=link_to review.comment, edit_admins_review_path(review) %>
+        </td>
+        <td class="col-xs-1">
+            <%=review.release_status %>
+        </td>
+        <td class="col-xs-2">
+            <%= review.created_at.to_s(:datetime_jp)%>
+        </td>
+    </tr>
+    <% end %>
 </table>
 <%= paginate @reviews %>

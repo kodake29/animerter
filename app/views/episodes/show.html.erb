@@ -74,14 +74,16 @@
 
 <h3 class="form-title">レビュー一覧</h3>
 <div class="reviews"><%= render 'reviews/episode_reviews', reviews: @reviews%></div>
-
+<%= paginate @reviews%>
 <script>
   $('.review-rating').raty({
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+   starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>'
   });
 </script>
 

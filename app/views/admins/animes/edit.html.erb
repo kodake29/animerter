@@ -1,19 +1,21 @@
 <div class="col-xs-4"></div>
 <div class="col-xs-4">
-<h3>作品編集</h3>
-<%= render 'layouts/error_messages', model: @anime %>
-<%= form_for @anime, url: admins_anime_path(@anime), method: :patch do |f| %>
-<h5>イメージ画像</h5>
-<%= f.attachment_field :image %>
-<h5>タイトル</h5>
-<%= f.text_area :title, rows:1, cols:40 %>
-<h5>あらすじ</h5>
-<%= f.text_area :explanation, rows:10, cols:40 %>
-<h5>公開ステータス</h5>
-<%= f.radio_button :display_status, :公開%>
-<%= f.label :公開 %>
-<%= f.radio_button :display_status, :非公開%>
-<%= f.label :非公開 %>
-<div><%= f.submit "修正する"%></div>
-<% end %>
+    <h3>作品編集</h3>
+    <%= render 'layouts/error_messages', model: @anime %>
+    <%= form_for @anime, url: admins_anime_path(@anime), method: :patch do |f| %>
+    <h5>イメージ画像</h5>
+    <%= f.attachment_field :image %>
+    <h5>タイトル</h5>
+    <%= f.text_area :title, rows:1, cols:40 %>
+    <h5>あらすじ</h5>
+    <%= f.text_area :explanation, rows:10, cols:40 %>
+    <h5>公開ステータス</h5>
+    <%= f.radio_button :display_status, :公開%>
+    <%= f.label :公開 %>
+    <%= f.radio_button :display_status, :非公開%>
+    <%= f.label :非公開 %>
+    <div>
+        <%= f.submit "修正する"%>
+    </div>
+    <% end %>
 </div>

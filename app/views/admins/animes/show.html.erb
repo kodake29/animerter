@@ -1,53 +1,61 @@
-<div class="row show-anime-box">
-<h1><%= @anime.title%></h1>
-<div class=".col-md-4 col-xs-12">
-<%= attachment_image_tag(@anime, :image, :fill,150,150, fallback: "no_image.jpg", size:'150x150',  format: "jpg")%>
-</div>
-<div class="col-md-4 col-xs-12">
-<%= @anime.explanation %>
-</div>
-
-<%= link_to "編集する", edit_admins_anime_path(@anime)%>
-</div>
-
+<div class="container show-anime-box">
+    <h1>
+        <%= @anime.title%>
+    </h1>
 
 <div class="row">
-<div class="col-md-5 col-xs-12">
-<h3>新規エピソード追加</h3>
-<%= render 'layouts/error_messages', model: @episode %>
-<%= form_for [:admins, @anime, @episode] do |f| %>
+    <div class=".col-md-4 col-xs-12">
+        <%= attachment_image_tag(@anime, :image, fallback: "no_image.jpg", size:'300x200',  format: "jpg")%>
+    </div>
+    <div class="col-md-12 col-xs-12">
+        <%= @anime.explanation %>
+    </div>
+    </div>
 
-<h5>イメージ画像</h5>
-<%= f.attachment_field :image %>
-<h5>エピソード番号</h5>
-第<%= f.text_field :episode_number, rows:1, cols:1%> 話
-<h5>サブタイトル</h5>
-<%= f.text_area :subtitle, rows:1, cols:40%>
-<h5>説明文</h5>
-<%= f.text_area :explanation, rows:10, cols:40%>
-<div><%= f.submit "エピソード追加"%></div>
-
-<% end %>
+    <%= link_to "編集する", edit_admins_anime_path(@anime), class:"btn btn-warning"%>
 </div>
-
-<div class="col-md-5 col-xs-12">
-<h3>エピソード一覧(全<%= @anime.episodes.count %>話)</h3>
-
-<table class="table table-striped">
-<tr>
-<th>エピソード番号</th>
-<th>サブタイトル</th>
-<th>総レビュー数</th>
-</tr>
-<% @anime.episodes.each do |episode| %>
-<tr>
-<td><%= link_to episode.episode_number, admins_anime_episode_path(@anime, episode) %></td>
-<td><%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %></td>
-<td><%= episode.reviews.count%></td>
-</tr>
-<% end %>
-</table>
-</div>
-
-
+<div class="row">
+    <div class="col-md-5 col-xs-12">
+        <h3>新規エピソード追加</h3>
+        <%= render 'layouts/error_messages', model: @episode %>
+        <%= form_for [:admins, @anime, @episode] do |f| %>
+        <h5>イメージ画像</h5>
+        <%= f.attachment_field :image %>
+        <h5>エピソード番号</h5>
+        第
+        <%= f.text_field :episode_number, rows:1, cols:1%> 話
+        <h5>サブタイトル</h5>
+        <%= f.text_area :subtitle, rows:1, cols:40%>
+        <h5>説明文</h5>
+        <%= f.text_area :explanation, rows:10, cols:40%>
+        <div>
+            <%= f.submit "エピソード追加", class: "btn btn-primary col-md-8 episode-btn"%>
+            <div class="col-md-4"></div>
+        </div>
+        <% end %>
+    </div>
+    <div class="col-md-5 col-xs-12">
+        <h3>エピソード一覧(全
+            <%= @anime.episodes.count %>話)</h3>
+        <table class="table table-striped">
+            <tr>
+                <th>エピソード番号</th>
+                <th>サブタイトル</th>
+                <th>総レビュー数</th>
+            </tr>
+            <% @anime.episodes.each do |episode| %>
+            <tr>
+                <td>
+                    <%= link_to episode.episode_number, admins_anime_episode_path(@anime, episode) %>
+                </td>
+                <td>
+                    <%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %>
+                </td>
+                <td>
+                    <%= episode.reviews.count%>
+                </td>
+            </tr>
+            <% end %>
+        </table>
+    </div>
 </div>

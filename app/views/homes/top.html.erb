@@ -35,10 +35,11 @@
             <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
             <% (@sum+=episode_rate) %>
           <% end %>
-          <div class="row">
+          <div class="row rate">
+          <div class="col-xs-1"></div>
           <% if anime.episodes.count != 0 %>
             <div class="review-rating col-xs-6" data-score="<%= @sum/anime.episodes.count %>"></div>
-            <div class="col-xs-4"><%= (@sum/anime.episodes.count).round(1) %></div>
+            <div class="col-xs-4 count"><h4><%= (@sum/anime.episodes.count).round(1) %></h4></div>
           <% end %>
           </div>
 
@@ -84,6 +85,8 @@
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+   starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>'
   });
 </script>

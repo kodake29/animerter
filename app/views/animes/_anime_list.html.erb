@@ -3,7 +3,7 @@
         <div class="anime-box">
           <h3><%= link_to anime.title, anime_path(anime)%></h3>
             <div class="image">
-              <%= attachment_image_tag(anime, :image, :fill,150,150, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
+              <%= attachment_image_tag(anime, :image, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg")%>
             </div>
           <% @sum = 0 %>
           <% anime.episodes.each do |episode| %>

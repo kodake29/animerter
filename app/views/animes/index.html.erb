@@ -10,11 +10,12 @@
 <%= render 'anime_list', animes: @animes %>
 <script>
   $('.review-rating').raty({
-    size     : 100,
     readOnly: true,
     score: function() {
       return $(this).attr('data-score');
     },
-    path: '/assets/'
+   starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>'
   });
 </script>
