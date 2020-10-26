@@ -3,7 +3,10 @@
     <h3>レビュー詳細</h3>
     <div class="review-rating" data-score="<%= @review.rate %>"></div>
     <h5>コメント</h5>
+    <div class="comment">
     <%= @review.comment %>
+    </div>
+
     <%= form_for @review, url: admins_review_path(@review) do |f| %>
     <%= f.radio_button :release_status, :許可%>
     <%= f.label :許可 %>

@@ -1,6 +1,6 @@
 <h2 class="form-title">全ての作品</h2>
-<%# 並び換え機能 %>
-<p>検索</p>
+<%# 検索機能 %>
+<h3><i class="fas fa-search">検索</i></h3>
 <%= form_tag(search_path,:method => 'get') do %>
   <%= text_field_tag :search %>
   <%= submit_tag 'Search', :name => nil %>

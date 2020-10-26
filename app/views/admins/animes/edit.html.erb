@@ -10,12 +10,17 @@
     <h5>あらすじ</h5>
     <%= f.text_area :explanation, rows:10, cols:40 %>
     <h5>公開ステータス</h5>
+    <div class="col-xs-4">
     <%= f.radio_button :display_status, :公開%>
     <%= f.label :公開 %>
+    </div>
+    <div class="col-xs-4">
     <%= f.radio_button :display_status, :非公開%>
     <%= f.label :非公開 %>
+    </div>
+
     <div>
-        <%= f.submit "修正する"%>
+        <%= f.submit "修正する", class:"btn btn-warning admin-anime-edit"%>
     </div>
     <% end %>
 </div>

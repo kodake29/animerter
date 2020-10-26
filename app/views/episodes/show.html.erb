@@ -18,7 +18,7 @@
 
 
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-レビューを投稿する
+<i class="far fa-comment">レビューを投稿する</i>
 </button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,11 +67,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 <h3 class="form-title">レビュー一覧</h3>
 <div class="reviews"><%= render 'reviews/episode_reviews', reviews: @reviews%></div>
 <%= paginate @reviews%>

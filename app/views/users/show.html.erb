@@ -2,12 +2,12 @@
 <div class="row" style="border-bottom: 2px solid #f96167">
 <div class="col-md-3"></div>
 
-<h1 class="col-md-6" ><%= @user.name%>さんのページ</h1>
+<h2 class="col-md-6" ><%= @user.name%>さんのページ</h2>
 
 <% if user_signed_in? && current_user.id == @user.id %>
 <div class="col-md-2">
              <%= link_to(edit_user_path) do %>
-            <button type="button" class="btn btn-warning">会員情報変更</button>
+            <button type="button" class="btn btn-warning"><i class="fas fa-wrench">会員情報変更</i></button>
             <% end %>
             </div>
 

@@ -4,17 +4,19 @@
         <h4 class="col-xs-6">
             <%= review.episode.anime.title %>
         </h4>
-        <h4 class="col-xs-3">第
+        <h4 class="col-xs-2">第
             <%= review.episode.episode_number %>話</h4>
-        <h4 class="col-xs-3">
-            <%= review.private_status%>
+        <h4 class="col-xs-4">
+            <%if review.private_status == "プライベート"%>
+            <p><i class="fas fa-lock">プライベート</i></P>
+            <% else %>
+            <p><i class="fas fa-globe">公開</i></p>
+            <% end %>
         </h4>
     </div>
 
 
-        <% if user_signed_in? && current_user.id == review.user_id %>
-        <%= link_to "修正", edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning col-xs-3 edit"%>
-        <% end %>
+
 
 
 <div class="row">
@@ -27,9 +29,17 @@
 </div>
 <div class="row">
     <div class="review-rating col-xs-4" data-score="<%= review.rate %>"></div>
-    <div class="col-xs-4"></div>
-    <span><i class="fas fa-history"></i>
-        <%= time_ago_in_words(review.created_at) %>前</span>
+        <% if user_signed_in? && current_user.id == review.user_id %>
+        <%= link_to edit_anime_episode_review_path(review.episode.anime, review.episode, review),class: "btn btn-warning col-xs-2 review-edit" do%>
+        <i class="fas fa-edit">修正</i>
+        <% end %>
+        <% end %>
+        <div class="col-xs-1"></div>
+        <div class="col-xs-4">
+            <i class="fas fa-history"></i>
+        <%= time_ago_in_words(review.created_at) %>前
+        </div>
+
 </div>
 </div>
 <% end %>

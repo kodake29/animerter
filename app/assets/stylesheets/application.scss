@@ -142,8 +142,11 @@ body{
   font-size:16px;
 }
 .comment{
-  margin-top:15px;
   font-size:16px;
+  word-wrap:break-word;
+}
+td{
+  word-break : break-all;
 }
 .edit-form{
   font-size:16px;
@@ -189,6 +192,28 @@ body{
   margin: 10px 0 30px 0;
   padding: 15px;
   border: 1px solid #f96167;
+  font-size:16px;
+}
+h1 {
+  position: relative;
+  padding: 5px 5px 5px 42px;
+  background: #77c3df;
+  font-size: 20px;
+  color: white;
+  margin-left: -33px;
+  line-height: 1.3;
+  z-index:-1;
+}
+
+h1:before {
+  position: absolute;
+  content: '';
+  left: -2px;
+  top: -2px;
+  border: none;
+  border-left: solid 40px white;
+  border-bottom: solid 79px transparent;
+  z-index:-2
 }
 .box2{
   display: inline-block;
@@ -197,6 +222,9 @@ body{
   border: 1px solid #f96167;
   box-shadow: 3px 3px 3px 3px #faebd7;
   border-radius: 10px;
+}
+.box2:hover{
+  background-color:#faebd7;
 }
 .show-box{
   color:black;
@@ -384,3 +412,12 @@ body{
 .episode-btn{
   width:200px;
 }
+
+.admin-anime-edit{
+  width:250px;
+}
+
+.review-edit{
+  width:100px;
+}
+

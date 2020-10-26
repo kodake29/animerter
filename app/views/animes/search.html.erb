@@ -1,6 +1,15 @@
 <h2>検索結果 :[<%= params[:search] %>]</h2>
 
-<%= link_to :back do %>
-<p>>back</p>
-<% end %>
+<%= link_to ">>back", animes_path , class:"back"%>
 <%= render 'anime_list', animes: @animes %>
+<script>
+  $('.review-rating').raty({
+    readOnly: true,
+    score: function() {
+      return $(this).attr('data-score');
+    },
+   starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+    starHalf: '<%= asset_path('star-half.png') %>'
+  });
+</script>

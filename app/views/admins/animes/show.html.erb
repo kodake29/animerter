@@ -12,7 +12,9 @@
     </div>
     </div>
 
-    <%= link_to "編集する", edit_admins_anime_path(@anime), class:"btn btn-warning"%>
+    <%= link_to edit_admins_anime_path(@anime), class:"btn btn-warning admin-anime-edit" do%>
+    <i class="fas fa-edit">編集する</i>
+    <% end %>
 </div>
 <div class="row">
     <div class="col-md-5 col-xs-12">
@@ -30,6 +32,7 @@
         <%= f.text_area :explanation, rows:10, cols:40%>
         <div>
             <%= f.submit "エピソード追加", class: "btn btn-primary col-md-8 episode-btn"%>
+
             <div class="col-md-4"></div>
         </div>
         <% end %>

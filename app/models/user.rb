@@ -10,6 +10,8 @@ class User < ApplicationRecord
          has_many :my_lists, dependent: :destroy
          has_many :animes, through: :my_lists
 
+         validates :name, length: { in: 1..40 }
+
   def active_for_authentication?
     super && (self.withdrawal_status == "有効会員" )
   end

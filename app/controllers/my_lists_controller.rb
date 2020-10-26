@@ -1,4 +1,5 @@
 class MyListsController < ApplicationController
+  before_action :authenticate_user!
   def create
     user = current_user
     anime = Anime.find(params[:anime_id])

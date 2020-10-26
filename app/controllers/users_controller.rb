@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     else
       @reviews = @user.reviews.page(params[:page]).reverse_order.where(release_status: 0, private_status: 0).per(5)
     end
-    @my_lists = MyList.page(params[:my_list_page]).reverse_order.where(user_id: @user.id).per(2)
+    @my_lists = MyList.page(params[:my_list_page]).reverse_order.where(user_id: @user.id).per(8)
   end
 
 

@@ -23,4 +23,6 @@
     <% end %>
 </table>
 <%= paginate @animes %>
-<%= link_to "新規作品追加", new_admins_anime_path ,class: "btn btn-info"%>
+<%= link_to  new_admins_anime_path ,class: "btn btn-info" do%>
+<i class="fas fa-plus-circle"><span>新規作品追加</span></i>
+<% end %>

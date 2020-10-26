@@ -1,4 +1,5 @@
 class EpisodesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @anime = Anime.find(params[:anime_id])
     @episodes = Episode.where(anime_id: @anime.id)
