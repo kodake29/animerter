@@ -1,15 +1,18 @@
-<h2>検索結果 :[<%= params[:search] %>]</h2>
-
+<h2>検索結果 :[
+    <%= params[:search] %>]</h2>
 <%= link_to ">>back", animes_path , class:"back"%>
 <%= render 'anime_list', animes: @animes %>
 <script>
-  $('.review-rating').raty({
+$('.review-rating').raty({
     readOnly: true,
     score: function() {
-      return $(this).attr('data-score');
+        return $(this).attr('data-score');
     },
-   starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>'
-  });
+    starOff: '<%= asset_path('
+    star - off.png ') %>',
+    starOn: '<%= asset_path('
+    star - on.png ') %>',
+    starHalf: '<%= asset_path('
+    star - half.png ') %>'
+});
 </script>

@@ -2,20 +2,21 @@
 <%# 検索機能 %>
 <h3><i class="fas fa-search">検索</i></h3>
 <%= form_tag(search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+<%= text_field_tag :search %>
+<%= submit_tag 'Search', :name => nil %>
 <% end %>
-
-
 <%= render 'anime_list', animes: @animes %>
 <script>
-  $('.review-rating').raty({
+$('.review-rating').raty({
     readOnly: true,
     score: function() {
-      return $(this).attr('data-score');
+        return $(this).attr('data-score');
     },
-   starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>'
-  });
+    starOff: '<%= asset_path('
+    star - off.png ') %>',
+    starOn: '<%= asset_path('
+    star - on.png ') %>',
+    starHalf: '<%= asset_path('
+    star - half.png ') %>'
+});
 </script>

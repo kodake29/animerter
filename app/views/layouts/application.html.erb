@@ -1,98 +1,95 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <%= favicon_link_tag('favicon.ico') %>
+
+<head>
+    <%= favicon_link_tag('favicon.ico') %>
     <title>Animerter</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-  </head>
+</head>
 
-  <body>
+<body>
     <header class="navbar navbar-fixed-top" style="background-color: #C0C0C0;">
         <div class="conteiner">
             <div class="row" style="margin-right: 60px">
                 <nav class="nav navber-nav navbar-left">
                     <div class="logo">
-                    <% if admin_signed_in? %>
-                    <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/admins/' %>
-                    <% else %>
+                        <% if admin_signed_in? %>
+                        <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/admins/' %>
+                        <% else %>
                         <%= link_to image_tag('logo.png', :width => '200', :height => '150' ), '/' %>
                         <% end %>
                     </div>
                 </nav>
-
-<div id="sp-menu">
- <ul class="nav navbar-nav navbar-right">
-                    <% if admin_signed_in? %>
+                <div id="sp-menu">
+                    <ul class="nav navbar-nav navbar-right">
+                        <% if admin_signed_in? %>
                         <li>
-                          <%= link_to "アニメ一覧",admins_animes_path, class: "header-text" %>
+                            <%= link_to "アニメ一覧",admins_animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to "ユーザ一覧", admins_users_path, class: "header-text" %>
+                            <%= link_to "ユーザ一覧", admins_users_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to "レビュー一覧",admins_reviews_path, class: "header-text" %>
+                            <%= link_to "レビュー一覧",admins_reviews_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"ログアウト", destroy_admin_session_path, method: :delete, class: "header-text" %>
+                            <%= link_to"ログアウト", destroy_admin_session_path, method: :delete, class: "header-text" %>
                         </li>
-                    <% elsif user_signed_in? %>
+                        <% elsif user_signed_in? %>
                         <li>
-                          <p class="welcome">ようこそ、<%= current_user.name%>さん!</p>
-                        </li>
-                        <li>
-                          <%= link_to "About",about_path, class: "header-text"%>
+                            <p class="welcome">ようこそ、
+                                <%= current_user.name%>さん!</p>
                         </li>
                         <li>
-                          <%= link_to"マイページ" ,user_path(current_user), class: "header-text" %>
+                            <%= link_to "About",about_path, class: "header-text"%>
                         </li>
                         <li>
-                          <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
+                            <%= link_to"マイページ" ,user_path(current_user), class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"ログアウト",destroy_admin_session_path, method: :delete, class: "header-text" %>
-                        </li>
-                    <% else %>
-                        <li>
-                          <%= link_to"About",about_path, class: "header-text" %>
+                            <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
+                            <%= link_to"ログアウト",destroy_admin_session_path, method: :delete, class: "header-text" %>
+                        </li>
+                        <% else %>
+                        <li>
+                            <%= link_to"About",about_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"新規登録", new_user_registration_path, class: "header-text" %>
+                            <%= link_to"アニメ一覧", animes_path, class: "header-text" %>
                         </li>
                         <li>
-                          <%= link_to"ログイン", new_user_session_path, class: "header-text" %>
+                            <%= link_to"新規登録", new_user_registration_path, class: "header-text" %>
                         </li>
-                    <% end %>
-                  </ul>
-    </div>
-
-    <div id="hm-icon">
-      <a class="menu-trigger" href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-      </a>
-    </div>
-
-
-
+                        <li>
+                            <%= link_to"ログイン", new_user_session_path, class: "header-text" %>
+                        </li>
+                        <% end %>
+                    </ul>
+                </div>
+                <div id="hm-icon">
+                    <a class="menu-trigger" href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </a>
+                </div>
             </div>
         </div>
     </header>
-<div class="margin" style="margin-top: 150px"></div>
+    <div class="margin" style="margin-top: 150px"></div>
+    <div class="container">
+        <%= yield %>
+        <span id="back">
+            <a href="#">
+                <%= image_tag 'arrow.png' %>
+            </a>
+        </span></div>
+</body>
 
-<div class="container"><%= yield %>
-    <span id="back">
-      <a href="#">
-      <%= image_tag 'arrow.png' %>
-      </a>
-    </span></div>
-
-  </body>
 </html>

@@ -1,96 +1,97 @@
 <div class="row">
-<h1 class="form-title"><%= @episode.anime.title %> <span>第<%= @episode.episode_number%>話</span></h1>
-<%= link_to ">>back", anime_episodes_path(@anime) , class:"back"%>
+    <h1 class="form-title">
+        <%= @episode.anime.title %> <span>第
+            <%= @episode.episode_number%>話</span></h1>
+    <%= link_to ">>back", anime_episodes_path(@anime) , class:"back"%>
 </div>
 <div class="row episode-box">
-        <div class="col-md-4 col-xs-12">
-          <%= attachment_image_tag(@episode, :image, fallback: "no_image.jpg", size:'250x150',  format: "jpg")%>
-        </div>
-
-        <div class="col-md-8 col-xs-12">
-          <h4><%= @episode.subtitle %></h4>
-          <%= @episode.explanation %>
-        </div>
-        <div class="review-rating col-xs-12" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div>
-      </div>
-
-<div class="row">
-
-
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-<i class="far fa-comment">レビューを投稿する</i>
-</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content" style="width:400px;">
-      <div class="modal-header">
-        <h4 class="modal-title" id="exampleModalLabel">レビュー投稿</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <%= render 'layouts/error_messages', model: @review %>
-<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path(@anime,@episode), remote: true do |f|%>
-      <div class="modal-body">
-
-      <div class="form-group"><div class="form-group row" id="star">
-    <%= f.label :rate,'評価【※必須】', class:'col-md-4 col-form-label' %>
-
-    <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
-  </div>
-<div><%= f.label :comment,"感想" %></div>
-<%= f.text_area "comment" ,rows:5, cols:50,placeholder: "100字以内" %>
-<div>
-<%= f.label :private_status,"公開ステータス"%>
-</div>
-<div class="col-xs-2"></div>
-<div>
-<div class="col-xs-3">
-<%= f.radio_button :private_status, :公開%>
-<%= f.label :公開 %>
-</div>
-<div class="col-xs-1"></div>
-<%= f.radio_button :private_status, :プライベート%>
-<%= f.label :プライベート %>
-
-
-</div>
-
-</div>
-      </div>
-      <div class="modal-footer">
-        <%= f.submit "投稿する", class:"btn btn-primary" %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-
-      </div>
-<% end %>
+    <div class="col-md-4 col-xs-12">
+        <%= attachment_image_tag(@episode, :image, fallback: "no_image.jpg", size:'250x150',  format: "jpg")%>
     </div>
-  </div>
+    <div class="col-md-8 col-xs-12">
+        <h4>
+            <%= @episode.subtitle %>
+        </h4>
+        <%= @episode.explanation %>
+    </div>
+    <div class="review-rating col-xs-12" data-score="<%= @episode.reviews.average(:rate).to_f.round(1) %>"></div>
 </div>
-<h3 class="form-title">レビュー一覧</h3>
-<div class="reviews"><%= render 'reviews/episode_reviews', reviews: @reviews%></div>
-
-<script>
-  $('.review-rating').raty({
-    readOnly: true,
-    score: function() {
-      return $(this).attr('data-score');
-    },
-   starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>'
-  });
-</script>
-
-
-  <script>
-  $('#star').raty({
-    size     : 60,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    starHalf: '<%= asset_path('star-half.png') %>',
-    scoreName: 'review[rate]',
-    half: true,
-  });
-  </script>
+<div class="row">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+        <i class="far fa-comment">レビューを投稿する</i>
+    </button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="width:400px;">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">レビュー投稿</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <%= render 'layouts/error_messages', model: @review %>
+                <%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path(@anime,@episode), remote: true do |f|%>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <div class="form-group row" id="star">
+                            <%= f.label :rate,'評価【※必須】', class:'col-md-4 col-form-label' %>
+                            <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
+                        </div>
+                        <div>
+                            <%= f.label :comment,"感想" %>
+                        </div>
+                        <%= f.text_area "comment" ,rows:5, cols:50,placeholder: "100字以内" %>
+                        <div>
+                            <%= f.label :private_status,"公開ステータス"%>
+                        </div>
+                        <div class="col-xs-2"></div>
+                        <div>
+                            <div class="col-xs-3">
+                                <%= f.radio_button :private_status, :公開%>
+                                <%= f.label :公開 %>
+                            </div>
+                            <div class="col-xs-1"></div>
+                            <%= f.radio_button :private_status, :プライベート%>
+                            <%= f.label :プライベート %>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <%= f.submit "投稿する", class:"btn btn-primary" %>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+    <h3 class="form-title">レビュー一覧</h3>
+    <div class="reviews">
+        <%= render 'reviews/episode_reviews', reviews: @reviews%>
+    </div>
+    <script>
+    $('.review-rating').raty({
+        readOnly: true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        starOff: '<%= asset_path('
+        star - off.png ') %>',
+        starOn: '<%= asset_path('
+        star - on.png ') %>',
+        starHalf: '<%= asset_path('
+        star - half.png ') %>'
+    });
+    </script>
+    <script>
+    $('#star').raty({
+        size: 60,
+        starOff: '<%= asset_path('
+        star - off.png ') %>',
+        starOn: '<%= asset_path('
+        star - on.png ') %>',
+        starHalf: '<%= asset_path('
+        star - half.png ') %>',
+        scoreName: 'review[rate]',
+        half: true,
+    });
+    </script>

@@ -2,16 +2,14 @@
     <h1>
         <%= @anime.title%>
     </h1>
-
-<div class="row">
-    <div class=".col-md-4 col-xs-12">
-        <%= attachment_image_tag(@anime, :image, fallback: "no_image.jpg", size:'300x200',  format: "jpg")%>
+    <div class="row">
+        <div class=".col-md-4 col-xs-12">
+            <%= attachment_image_tag(@anime, :image, fallback: "no_image.jpg", size:'300x200',  format: "jpg")%>
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <%= @anime.explanation %>
+        </div>
     </div>
-    <div class="col-md-12 col-xs-12">
-        <%= @anime.explanation %>
-    </div>
-    </div>
-
     <%= link_to edit_admins_anime_path(@anime), class:"btn btn-warning admin-anime-edit" do%>
     <i class="fas fa-edit">編集する</i>
     <% end %>
@@ -32,7 +30,6 @@
         <%= f.text_area :explanation, rows:10, cols:40%>
         <div>
             <%= f.submit "エピソード追加", class: "btn btn-primary col-md-8 episode-btn"%>
-
             <div class="col-md-4"></div>
         </div>
         <% end %>

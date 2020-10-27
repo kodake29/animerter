@@ -1,28 +1,30 @@
-
-
-        <div class="flex">
-      <% animes.each do |anime|%>
-        <div class="anime-box">
-          <h3><%= link_to anime.title, anime_path(anime), class: "anime-title"%></h3>
-            <div class="image img-rounded">
+<div class="flex">
+    <% animes.each do |anime|%>
+    <div class="anime-box">
+        <h3>
+            <%= link_to anime.title, anime_path(anime), class: "anime-title"%>
+        </h3>
+        <div class="image img-rounded">
             <%= link_to anime_path(anime) do %>
-              <%= attachment_image_tag(anime, :image, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg", class: "img-rounded") %>
-              <% end %>
-            </div>
-          <% @sum = 0 %>
-          <% anime.episodes.each do |episode| %>
-            <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
-            <% (@sum+=episode_rate) %>
-          <% end %>
-          <div class="row rate">
-          <div class="col-xs-1"></div>
-          <% if anime.episodes.count != 0 %>
-            <div class="review-rating col-xs-6" data-score="<%= @sum/anime.episodes.count %>"></div>
-            <div class="col-xs-4 count"><h4><%= (@sum/anime.episodes.count).round(1) %></h4></div>
-          <% end %>
-          </div>
-
-
+            <%= attachment_image_tag(anime, :image, fallback: "no_image.jpg", width: '100%', height: '200px',  format: "jpg", class: "img-rounded") %>
+            <% end %>
         </div>
-      <% end %>
+        <% @sum = 0 %>
+        <% anime.episodes.each do |episode| %>
+        <% episode_rate = episode.reviews.average(:rate).to_f.round(1)%>
+        <% (@sum+=episode_rate) %>
+        <% end %>
+        <div class="row rate">
+            <div class="col-xs-1"></div>
+            <% if anime.episodes.count != 0 %>
+            <div class="review-rating col-xs-6" data-score="<%= @sum/anime.episodes.count %>"></div>
+            <div class="col-xs-4 count">
+                <h4>
+                    <%= (@sum/anime.episodes.count).round(1) %>
+                </h4>
+            </div>
+            <% end %>
+        </div>
     </div>
+    <% end %>
+</div>
