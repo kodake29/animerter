@@ -57,24 +57,7 @@ body{
   font-size: 30px;
   margin:30px 0;
 }
-.about-title {
-  margin: 10px 20px 30px;
-  width: 11%;
-  border-bottom: solid 2px red;
-}
 
-.about-text {
-  margin: 250px auto 20px;
-  border-style: none;
-}
-.about-text2 {
-  margin: 350px auto 20px;
-  border-style: none;
-}
-.about-text3 {
-  margin: 400px auto 20px;
-  border-style: none;
-}
 
 .anime-box {
   padding: 10px;
@@ -203,6 +186,8 @@ h1 {
   margin-left: -33px;
   line-height: 1.3;
   z-index:-1;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 h1:before {
@@ -275,6 +260,7 @@ h1:before {
   color: #ffffcc;
   margin-bottom: 50px;
   font-family: impact;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 .image1 {
   background-image: image-url("image1.jpg");
@@ -423,4 +409,28 @@ h1:before {
 
 .number-box{
   width:50px;
+}
+.image5{
+  width:100%;
+  height:700px;
+  background-size: cover;
+  background-image: image-url("image5.jpg");
+  position: relative;
+}
+.about-title {
+  margin: 10px 20px 30px;
+  width: 11%;
+  border-bottom: solid 2px red;
+}
+
+.about-text {
+  position: absolute;
+  margin: 250px auto 20px;
+  border-style: none;
+  left:350px;
+  top:50px;
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
