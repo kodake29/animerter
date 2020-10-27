@@ -17,7 +17,7 @@
             <%= link_to review.episode.anime.title, admins_anime_path(review.episode.anime) %>
         </td>
         <td class="col-xs-1">
-            <%=link_to review.episode.episode_number, admins_anime_episode_path(review.episode.anime, review.episode) %>
+            <%=link_to review.episode.episode_number, edit_admins_anime_episode_path(review.episode.anime, review.episode) %>
         </td>
         <td class="col-xs-5 comment">
             <%=link_to review.comment, edit_admins_review_path(review), class:"comment" %>

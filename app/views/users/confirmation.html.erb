@@ -11,8 +11,10 @@
                 <% end %>
             </td>
             <td>
+            <% if @user.email != "guest@example.com" %>
                 <%= link_to(users_withdraw_path, method: :patch) do %>
                 <button class="comfirm_withdrawel btn btn-danger ">退会する</button>
+                <% end %>
                 <% end %>
             </td>
         </tr>

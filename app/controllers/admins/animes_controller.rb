@@ -22,7 +22,7 @@ class Admins::AnimesController < ApplicationController
   end
 
   def index
-  @animes = Anime.all
+  @animes = Anime.page(params[:page]).reverse_order
   end
 
   def show
