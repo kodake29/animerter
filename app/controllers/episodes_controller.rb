@@ -9,7 +9,7 @@ class EpisodesController < ApplicationController
     @review = Review.new
     @anime = Anime.find(params[:anime_id])
     @episode = Episode.find(params[:id])
-    @reviews = Review.page(params[:page]).reverse_order.where(episode_id: @episode.id, release_status: 0, private_status: 0).per(6)
+    @reviews = Review.page(params[:page]).where(episode_id: @episode.id, release_status: 0, private_status: 0).reverse_order.per(6)
   end
 
 

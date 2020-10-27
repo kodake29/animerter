@@ -1,4 +1,5 @@
 $("textarea").val("");
-$("input").val("");
+$('input[name="review[rate]"]').val("");
+$('#star').raty('score', 0);
 $("#exampleModal").modal("hide");
 $('.reviews').html("<%= escape_javascript(render 'reviews/episode_reviews',reviews: @reviews)%>");

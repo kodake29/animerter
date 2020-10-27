@@ -31,15 +31,16 @@
         </button>
       </div>
       <%= render 'layouts/error_messages', model: @review %>
-<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path(@anime,@episode), remote: true do |f| %>
+<%= form_for [@anime, @episode, @review], url: anime_episode_reviews_path(@anime,@episode), remote: true do |f|%>
       <div class="modal-body">
+
       <div class="form-group"><div class="form-group row" id="star">
     <%= f.label :rate,'評価【※必須】', class:'col-md-4 col-form-label' %>
 
     <%= f.hidden_field :rate, id: :review_star, class: "form-control" %>
   </div>
 <div><%= f.label :comment,"感想" %></div>
-<%= f.text_area "comment" ,rows:5, cols:50 %>
+<%= f.text_area "comment" ,rows:5, cols:50,placeholder: "100字以内" %>
 <div>
 <%= f.label :private_status,"公開ステータス"%>
 </div>

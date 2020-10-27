@@ -8,12 +8,13 @@ class ReviewsController < ApplicationController
     def create
       @episode = Episode.find(params[:episode_id])
       @anime = Anime.find(params[:anime_id])
-      @reviews = Review.where(episode_id: @episode.id, release_status: 0, private_status: 0)
+      @reviews = Review.page(params[:page]).where(episode_id: @episode.id, release_status: 0, private_status: 0).reverse_order.per(6)
+      #@reviews = Review.where(episode_id: @episode.id, release_status: 0, private_status: 0)
       @review = Review.new(review_params)
       @review.episode_id = @episode.id
       @review.user_id = current_user.id
       @review.save
-
+      p @review.errors
     end
 
     def index
