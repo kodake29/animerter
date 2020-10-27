@@ -19,10 +19,6 @@ class Admins::EpisodesController < ApplicationController
     @episodes = Episode.all
   end
 
-  def show
-    @episode = Episode.find(params[:id])
-  end
-
   def edit
     @anime = Anime.find(params[:anime_id])
     @episode = Episode.find(params[:id])

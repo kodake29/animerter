@@ -18,7 +18,7 @@
 </div>
 <div class="row">
     <div class="col-md-5 col-xs-12">
-        <h3>新規エピソード追加</h3>
+        <h3 class="form-title">新規エピソード追加</h3>
         <%= render 'layouts/error_messages', model: @episode %>
         <%= form_for [:admins, @anime, @episode] do |f| %>
         <h5>イメージ画像</h5>
@@ -38,7 +38,7 @@
         <% end %>
     </div>
     <div class="col-md-5 col-xs-12">
-        <h3>エピソード一覧(全
+        <h3 class="form-title">エピソード一覧(全
             <%= @anime.episodes.count %>話)</h3>
         <table class="table table-striped">
             <tr>
@@ -52,7 +52,7 @@
                     <%= link_to episode.episode_number, admins_anime_episode_path(@anime, episode) %>
                 </td>
                 <td>
-                    <%= link_to episode.subtitle, admins_anime_episode_path(@anime, episode) %>
+                    <%= link_to episode.subtitle, edit_admins_anime_episode_path(@anime, episode) %>
                 </td>
                 <td>
                     <%= episode.reviews.count%>

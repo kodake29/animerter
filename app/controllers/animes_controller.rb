@@ -3,7 +3,7 @@ class AnimesController < ApplicationController
   before_action :login_check, only: [:index, :show, :search]
 
   def index
-    @animes = Anime.page(params[:page]).reverse_order.where(display_status: 0).per(9)
+    @animes = Anime.page(params[:page]).where(display_status: 0).reverse_order.per(9)
     @episodes = Episode.all
   end
 
