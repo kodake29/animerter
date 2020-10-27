@@ -5,7 +5,6 @@ class Admins::AnimesController < ApplicationController
     @episodes = Episode.all
     @reviews = Review.all
     @users = User.all
-    @requests = Request.all
   end
 
 

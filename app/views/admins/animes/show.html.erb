@@ -49,7 +49,7 @@
             <% @anime.episodes.each do |episode| %>
             <tr>
                 <td>
-                    <%= link_to episode.episode_number, admins_anime_episode_path(@anime, episode) %>
+                    <%= link_to episode.episode_number, edit_admins_anime_episode_path(@anime, episode) %>
                 </td>
                 <td>
                     <%= link_to episode.subtitle, edit_admins_anime_episode_path(@anime, episode) %>

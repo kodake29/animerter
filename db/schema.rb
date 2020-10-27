@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 2020_10_07_045900) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "title"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.integer "episode_id"
     t.integer "user_id"
